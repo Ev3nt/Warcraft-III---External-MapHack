@@ -359,15 +359,15 @@ VOID DrawEspBox(D3DXVECTOR2 top, D3DXVECTOR2 bot, float thickness, D3DCOLOR colo
 D3DXVECTOR3 WorldToScreen(const D3DXVECTOR3 pos)
 {
 	float _x = view_matrix[0] * pos.x + view_matrix[1] * pos.y + view_matrix[2] * pos.z + view_matrix[3];
-	float _y = view_matrix[4] * pos.x / 2 + view_matrix[5] * pos.y / 1.5f + view_matrix[6] * pos.z + view_matrix[7] / 2; // »√–¿… “”“ —  Œ›‘‘»÷≈Õ“¿Ã»
+	float _y = view_matrix[4] * pos.x + view_matrix[5] * pos.y + view_matrix[6] * pos.z + view_matrix[7]; // »√–¿… “”“ —  Œ›‘‘»÷≈Õ“¿Ã»
 
 	float w = view_matrix[12] * pos.x + view_matrix[13] * pos.y + view_matrix[14] * pos.z + view_matrix[15];
 	
 	float x = _x / w;
-	float y = _y / w;
+	float y = _y / w / 1.32f;
 
 	x = (screen_width / 2.f * x) + (x + screen_width / 2.f) - 20.f;
-	y = -(screen_height / 2.f * y) + (y + screen_height / 2.f);
+	y = -(screen_height / 2.f * y) + (y + screen_height / 2.f) - 30.f;
 	
 	return { x,y,w };
 }
