@@ -9,12 +9,6 @@
 
 #include <Psapi.h>
 
-typedef struct {
-	float x;
-	float y;
-	float z;
-} CameraPosition, * PCameraPosition;
-
 HWND g_hWnd = NULL;
 HWND g_hWarcraftWnd = FindWindow(0, "Warcraft III");
 DWORD g_game_dll_base;
@@ -32,8 +26,6 @@ float screen_height;
 D3DXMATRIXA16 view_matrix_temp;
 D3DXMATRIXA16 view_matrix;
 
-CameraPosition camera;
-
 enum offsets {
 	unit_list_offset = 0xAB428C,
 	unit_between_offset = 0x310,
@@ -41,16 +33,11 @@ enum offsets {
 	unit_flag_is_unit = 0xB8,
 	unit_position_offset = 0x288,
 
-	camera_position_offset = 0xAB554C,
-	camera_z_offset = 0xAAE794,
-
 	game_ui_offset = 0xACE66C,
 
 	game_matrix_offset = 0xAAE790,
-	//game_matrix_offset = 0x7DBA1C,
 	
 	game_matrix_p = 0x850		// 890, 8A0, 8B0
-	//game_matrix_p = 0xAC4
 };
 
 BOOL D3DInit(HWND hWnd);
@@ -112,8 +99,6 @@ BOOL APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR lpCmdLine, BOO
 			rect = { Form.left, Form.top, Form.right - Form.left, Form.bottom - Form.top };
 
 			MoveWindow(g_hWnd, (int)rect.left, (int)rect.top, (int)rect.right, (int)rect.bottom, TRUE);
-			/*Form.right -= 35;
-			Form.bottom -= 150;*/
 		}
 	}
 
@@ -155,41 +140,30 @@ VOID Render()
 							D3DXVECTOR3 position = { 0, 0, 0};
 							D3DXVECTOR3 screen_position;
 							ReadBytes((LPVOID)(address + unit_position_offset), 12, &position);
-							//ReadBytes((LPVOID)(g_game_dll_base + camera_position_offset), 8, &camera);
 							position = { position.x, position.y, position.z};
 
 							ReadBytes((LPVOID)(g_game_dll_base + game_matrix_offset), 4, &view_matrix_temp.m);
 							ReadBytes((LPVOID)(*(DWORD*)&view_matrix_temp.m + game_matrix_p), 64, &view_matrix_temp.m);
-							//ReadBytes((LPVOID)((DWORD)0x10763550), 64, &view_matrix.m);
 
 							view_matrix = view_matrix_temp;
-							view_matrix[0] = view_matrix_temp[0];// *0.785f;
+							view_matrix[0] = view_matrix_temp[0];
 							view_matrix[0] = view_matrix_temp[0];
 							view_matrix[1] = view_matrix_temp[4];
 							view_matrix[2] = view_matrix_temp[8];
-							view_matrix[3] = view_matrix_temp[12];// *0.784f;// - 25.19f;
+							view_matrix[3] = view_matrix_temp[12];
 							view_matrix[4] = view_matrix_temp[1];
-							view_matrix[5] = view_matrix_temp[5];// *1.164f;
-							view_matrix[6] = view_matrix_temp[9];// *1.165f;
-							view_matrix[7] = view_matrix_temp[13];// *1.163f;// - 38.05f;
+							view_matrix[5] = view_matrix_temp[5];
+							view_matrix[6] = view_matrix_temp[9];
+							view_matrix[7] = view_matrix_temp[13];
 							view_matrix[8] = view_matrix_temp[2];
-							view_matrix[9] = view_matrix_temp[6];// *0.965f;
-							view_matrix[10] = view_matrix_temp[10];// *0.976f;
-							view_matrix[11] = view_matrix_temp[14];// *1.07f;// + 104.71f;
+							view_matrix[9] = view_matrix_temp[6];
+							view_matrix[10] = view_matrix_temp[10];
+							view_matrix[11] = view_matrix_temp[14];
 							view_matrix[12] = view_matrix_temp[3];
 							view_matrix[13] = view_matrix_temp[7];
 							view_matrix[14] = view_matrix_temp[11];
 							view_matrix[15] = view_matrix[15];
 
-							
-
-							/*view_matrix[0] -= 0.15f;
-							view_matrix[5] += 0.30f;
-							view_matrix[6] += 0.20f;
-							view_matrix[9] -= 0.02f;
-							view_matrix[10] += 0.02f;*/
-
-							//world_to_screen(position, screen_position);
 							screen_position = WorldToScreen(position);
 							
 							if (screen_position.z >= 0.01f)
@@ -200,61 +174,6 @@ VOID Render()
 								DrawLine(screen_width / 2, (float)(Form.bottom - Form.top), screen_position.x, screen_position.y, 5, 0XFF00FF00);
 								DrawEspBox(top, bot, 5, 0xFFFF0000);
 							}
-							//DrawLine((Form.right - Form.left) / 2, Form.bottom - Form.top, screen_position.x - Form.left, screen_position.y - Form.top - 100, 5, 0XFF00FF00);
-							/*D3DXVECTOR3 position;
-							ReadBytes((LPVOID)(address + unit_position_offset), 12, &position);
-							
-							float fov = 2500.f;
-							float coefficient_x = 0.74f;
-							float coefficient_y = 0.425f;
-
-							ReadBytes((LPVOID)(g_game_dll_base + camera_position_offset), 8, &camera);
-							ReadBytes((LPVOID)(g_game_dll_base + camera_z_offset), 4, &camera.z);
-							ReadBytes((LPVOID)(*(DWORD*)&camera.z + 0xE0), 4, &camera.z);
-							RECT camerarect = { (LONG)(camera.x - fov / 2), (LONG)(camera.y + fov / 2), (LONG)(camera.x + fov / 2), (LONG)(camera.y - fov / 2) };
-
-							if (!(position.x > camerarect.left && position.x < camerarect.right && position.y > camerarect.bottom && position.y < camerarect.top))
-								continue;
-
-							float zc = 1460.f;
-							float zu = camera.z + position.z;
-							float xc = camera.x;
-							float xu = position.x;
-
-							float x2 = (-xc + xu);
-
-							float x = (x2 * zc) / zu;
-
-							float yc = camera.y;
-							float yu = position.y;
-
-							float y2 = (yc - yu);
-
-							float y = (y2 * (zc - 740)) / zu;
-
-							DrawLine(Form.z / 2, Form.w / 2, x, y, 5, 0XFFFF0000);
-
-							/*int height = 50;
-							D3DXVECTOR2 hitbox = { Form.z / 2 + x, Form.w / 2 + y };*/
-
-							/*D3DXVECTOR2 top = { Form.z / 2 + (-camera.x + position.x) * coefficient_x, Form.w / 2 - 100 + (camera.y - position.y) * coefficient_y };
-							D3DXVECTOR2 bot = { Form.z / 2 + (-camera.x + position.x) * coefficient_x, Form.w / 2 - 100 + (camera.y - position.y) * coefficient_y + 100 };*/
-							/*D3DXVECTOR2 top = { hitbox.x, hitbox.y };
-							D3DXVECTOR2 bot = { hitbox.x, hitbox.y + 5 };
-							DrawEspBox(top, bot, 1, 0xFF00FFFF);
-
-							DrawLine(Form.z / 2, Form.w / 2, Form.z / 2 + 225, Form.w / 2, 3, 0xFFFF0000);
-
-							ID3DXFont* d3dFont = 0;
-							D3DXCreateFont(g_pd3dDevice, 25, 0, FW_NORMAL, 1, false, DEFAULT_CHARSET, OUT_DEVICE_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH, "Bahnschrift", &d3dFont);
-
-							char buffer[MAX_PATH] = { 0 };
-							sprintf_s(buffer, "Camera X: %f\nCamera Y: %f\nCamera Z: %f", camera.x, camera.y, camera.z);
-
-							RECT rect = { (LONG)(Form.z / 2), (LONG)(Form.w / 2), (LONG)Form.z, (LONG)Form.w };
-							d3dFont->DrawText(0, buffer, sizeof(buffer), &rect, 0, D3DCOLOR_ARGB(255, 255, 0, 0));
-
-							d3dFont->Release();*/
 						}
 					}
 					else
@@ -336,30 +255,10 @@ VOID DrawEspBox(D3DXVECTOR2 top, D3DXVECTOR2 bot, float thickness, D3DCOLOR colo
 	DrawLine(tr, br, thickness, color);
 }
 
-/*D3DXVECTOR3 WorldToScreen(const D3DXVECTOR3 pos)
-{
-	float _x = view_matrix[0] * pos.x + view_matrix[1] * pos.y + view_matrix[2] * pos.z + view_matrix[3];
-	float _y = view_matrix[4] * pos.x + view_matrix[5] * pos.y + view_matrix[6] * pos.z + view_matrix[7];
-
-	float w = view_matrix[12] * pos.x + view_matrix[13] * pos.y + view_matrix[14] * pos.z + view_matrix[15];
-
-	float inv_w = 1.f / w;
-	_x *= inv_w;
-	_y *= inv_w;
-
-	float x = screen_width * 0.5f;
-	float y = screen_height * 0.5f;
-
-	x += 0.5f * _x * screen_width + 0.5f;
-	y -= 0.5f * _y * screen_height + 0.5f;
-
-	return { x,y,w };
-}*/
-
 D3DXVECTOR3 WorldToScreen(const D3DXVECTOR3 pos)
 {
 	float _x = view_matrix[0] * pos.x + view_matrix[1] * pos.y + view_matrix[2] * pos.z + view_matrix[3];
-	float _y = view_matrix[4] * pos.x + view_matrix[5] * pos.y + view_matrix[6] * pos.z + view_matrix[7]; // »√–¿… “”“ —  Œ›‘‘»÷≈Õ“¿Ã»
+	float _y = view_matrix[4] * pos.x + view_matrix[5] * pos.y + view_matrix[6] * pos.z + view_matrix[7];
 
 	float w = view_matrix[12] * pos.x + view_matrix[13] * pos.y + view_matrix[14] * pos.z + view_matrix[15];
 	
@@ -367,46 +266,10 @@ D3DXVECTOR3 WorldToScreen(const D3DXVECTOR3 pos)
 	float y = _y / w / 1.35f;
 
 	x = (screen_width / 2.f * x) + (x + screen_width / 2.f) - 20.f;
-	y = -(screen_height / 2.f * y) + (y + screen_height / 2.f) - 35.f;
+	y = -(screen_height / 2.f * y) + (y + screen_height / 2.f) - 50.f;
 	
 	return { x,y,w };
 }
-
-/*int world_to_screen(float* from, float* to)
-{
-	float w = 0.0f;
-	to[0] = view_matrix.m[0][0] * from[0] + view_matrix.m[0][1] * from[1] + view_matrix.m[0][2] * from[2] + view_matrix.m[0][3];
-	to[1] = view_matrix.m[1][0] * from[0] + view_matrix.m[1][1] * from[1] + view_matrix.m[1][2] * from[2] + view_matrix.m[1][3];
-	w = view_matrix.m[3][0] * from[0] + view_matrix.m[3][1] * from[1] + view_matrix.m[3][2] * from[2] + view_matrix.m[3][3];
-	if (w < 0.01f)
-		return 0;
-	float invw = 1.0f / w;
-	to[0] *= invw;
-	to[1] *= invw;
-	int width = (int)(Form.right - Form.left);
-	int height = (int)(Form.bottom - Form.top);
-	float x = width / 2;
-	float y = height / 2;
-	x += 0.5 * to[0] * width + 0.5;
-	y -= 0.5 * to[1] * height + 0.5;
-	to[0] = x + Form.left;
-	to[1] = y + Form.top;
-	return 1;
-}*/
-
-/*D3DXVECTOR3 WorldToScreen(const D3DXVECTOR3 pos)
-{
-	
-
-	float w = view_matrix[12] * pos.x + view_matrix[13] * pos.y + view_matrix[14] * pos.z + view_matrix[15];
-
-	float inv_w = 1.f / w;
-
-	float x = (screen_width * 0.5f) + (0.5f * ((view_matrix[0] * pos.x + view_matrix[1] * pos.y + view_matrix[2] * pos.z + view_matrix[3]) * inv_w) * screen_width + 0.5f);
-	float y = (screen_height * 0.5f) - (0.5f * ((view_matrix[4] * pos.x + view_matrix[5] * pos.y + view_matrix[6] * pos.z + view_matrix[7]) * inv_w) * screen_height + 0.5f);
-
-	return { x,y,w };
-}*/
 
 BOOL D3DInit(HWND hWnd)
 {
