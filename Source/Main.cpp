@@ -160,24 +160,28 @@ VOID Render()
 
 							ReadBytes((LPVOID)(g_game_dll_base + game_matrix_offset), 4, &view_matrix_temp.m);
 							ReadBytes((LPVOID)(*(DWORD*)&view_matrix_temp.m + game_matrix_p), 64, &view_matrix_temp.m);
-							//ReadBytes((LPVOID)((DWORD)0x09531DA0), 64, &view_matrix.m);
+							//ReadBytes((LPVOID)((DWORD)0x10763550), 64, &view_matrix.m);
 
 							view_matrix = view_matrix_temp;
+							view_matrix[0] = view_matrix_temp[0];// *0.785f;
 							view_matrix[0] = view_matrix_temp[0];
 							view_matrix[1] = view_matrix_temp[4];
 							view_matrix[2] = view_matrix_temp[8];
-							view_matrix[3] = view_matrix_temp[12] - 20 * (screen_width / screen_height);// - 25.19f;
+							view_matrix[3] = view_matrix_temp[12];// *0.784f;// - 25.19f;
 							view_matrix[4] = view_matrix_temp[1];
-							view_matrix[5] = view_matrix_temp[5];
-							view_matrix[6] = view_matrix_temp[9];
-							view_matrix[7] = view_matrix_temp[13];// - 38.05f;
+							view_matrix[5] = view_matrix_temp[5];// *1.164f;
+							view_matrix[6] = view_matrix_temp[9];// *1.165f;
+							view_matrix[7] = view_matrix_temp[13];// *1.163f;// - 38.05f;
 							view_matrix[8] = view_matrix_temp[2];
-							view_matrix[9] = view_matrix_temp[6];
-							view_matrix[11] = view_matrix_temp[14];// + 104.71f;
+							view_matrix[9] = view_matrix_temp[6];// *0.965f;
+							view_matrix[10] = view_matrix_temp[10];// *0.976f;
+							view_matrix[11] = view_matrix_temp[14];// *1.07f;// + 104.71f;
 							view_matrix[12] = view_matrix_temp[3];
 							view_matrix[13] = view_matrix_temp[7];
 							view_matrix[14] = view_matrix_temp[11];
 							view_matrix[15] = view_matrix[15];
+
+							
 
 							/*view_matrix[0] -= 0.15f;
 							view_matrix[5] += 0.30f;
@@ -332,7 +336,7 @@ VOID DrawEspBox(D3DXVECTOR2 top, D3DXVECTOR2 bot, float thickness, D3DCOLOR colo
 	DrawLine(tr, br, thickness, color);
 }
 
-D3DXVECTOR3 WorldToScreen(const D3DXVECTOR3 pos)
+/*D3DXVECTOR3 WorldToScreen(const D3DXVECTOR3 pos)
 {
 	float _x = view_matrix[0] * pos.x + view_matrix[1] * pos.y + view_matrix[2] * pos.z + view_matrix[3];
 	float _y = view_matrix[4] * pos.x + view_matrix[5] * pos.y + view_matrix[6] * pos.z + view_matrix[7];
@@ -349,6 +353,22 @@ D3DXVECTOR3 WorldToScreen(const D3DXVECTOR3 pos)
 	x += 0.5f * _x * screen_width + 0.5f;
 	y -= 0.5f * _y * screen_height + 0.5f;
 
+	return { x,y,w };
+}*/
+
+D3DXVECTOR3 WorldToScreen(const D3DXVECTOR3 pos)
+{
+	float _x = view_matrix[0] * pos.x + view_matrix[1] * pos.y + view_matrix[2] * pos.z + view_matrix[3];
+	float _y = view_matrix[4] * pos.x / 2 + view_matrix[5] * pos.y / 1.5f + view_matrix[6] * pos.z + view_matrix[7] / 2; // »√–¿… “”“ —  Œ›‘‘»÷≈Õ“¿Ã»
+
+	float w = view_matrix[12] * pos.x + view_matrix[13] * pos.y + view_matrix[14] * pos.z + view_matrix[15];
+	
+	float x = _x / w;
+	float y = _y / w;
+
+	x = (screen_width / 2.f * x) + (x + screen_width / 2.f) - 20.f;
+	y = -(screen_height / 2.f * y) + (y + screen_height / 2.f);
+	
 	return { x,y,w };
 }
 
