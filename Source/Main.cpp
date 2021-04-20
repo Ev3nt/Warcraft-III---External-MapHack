@@ -364,10 +364,10 @@ D3DXVECTOR3 WorldToScreen(const D3DXVECTOR3 pos)
 	float w = view_matrix[12] * pos.x + view_matrix[13] * pos.y + view_matrix[14] * pos.z + view_matrix[15];
 	
 	float x = _x / w;
-	float y = _y / w / 1.32f;
+	float y = _y / w / 1.35f;
 
 	x = (screen_width / 2.f * x) + (x + screen_width / 2.f) - 20.f;
-	y = -(screen_height / 2.f * y) + (y + screen_height / 2.f) - 30.f;
+	y = -(screen_height / 2.f * y) + (y + screen_height / 2.f) - 35.f;
 	
 	return { x,y,w };
 }
