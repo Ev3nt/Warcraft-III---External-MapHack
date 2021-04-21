@@ -47,7 +47,6 @@ VOID DrawLine(float x1, float y1, float x2, float y2, float thickness, D3DCOLOR 
 VOID DrawLine(D3DXVECTOR2 src, D3DXVECTOR2 dst, float thickness, D3DCOLOR color);
 
 VOID DrawEspBox(D3DXVECTOR2 top, D3DXVECTOR2 bot, float thickness, D3DCOLOR color);
-int world_to_screen(float* from, float* to);
 
 D3DXVECTOR3 WorldToScreen(const D3DXVECTOR3 pos);
 
@@ -112,109 +111,96 @@ BOOL APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR lpCmdLine, BOO
 
 VOID Render()
 {
-	if (g_pd3dDevice == NULL)
+	if (!g_pd3dDevice)
 		return;
 
 	g_pd3dDevice->Clear(NULL, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0);
 
 	if (SUCCEEDED(g_pd3dDevice->BeginScene()))
 	{
-		int gameui;
-		ReadBytes((LPVOID)(g_game_dll_base + game_ui_offset), 4, &gameui);
-
-		if (gameui != 0)
+		if (GetForegroundWindow() == g_hWarcraftWnd)
 		{
-			DWORD unit_list = g_game_dll_base + unit_list_offset;
-			DWORD address;
-			ReadBytes((LPVOID)(unit_list), 4, &address);
+			int gameui;
+			ReadBytes((LPVOID)(g_game_dll_base + game_ui_offset), 4, &gameui);
 
-			while (unit_list != 0)
+			if (gameui != 0)
 			{
-				DWORD flag;
+				DWORD unit_list = g_game_dll_base + unit_list_offset;
+				DWORD address;
+				ReadBytes((LPVOID)(unit_list), 4, &address);
 
-				for (; ; address += unit_between_offset)
-					if (ReadBytes((LPVOID)(address + unit_flag_is_unit), 4, &flag))
-					{
-						if (flag)
+				while (unit_list != 0)
+				{
+					DWORD flag;
+
+					for (; ; address += unit_between_offset)
+						if (ReadBytes((LPVOID)(address + unit_flag_is_unit), 4, &flag))
 						{
-							D3DXVECTOR3 position = { 0, 0, 0};
-							D3DXVECTOR3 screen_position;
-							ReadBytes((LPVOID)(address + unit_position_offset), 12, &position);
-							position = { position.x, position.y, position.z};
-
-							ReadBytes((LPVOID)(g_game_dll_base + game_matrix_offset), 4, &view_matrix_temp.m);
-							ReadBytes((LPVOID)(*(DWORD*)&view_matrix_temp.m + game_matrix_p), 64, &view_matrix_temp.m);
-
-							view_matrix = view_matrix_temp;
-							view_matrix[0] = view_matrix_temp[0];
-							view_matrix[0] = view_matrix_temp[0];
-							view_matrix[1] = view_matrix_temp[4];
-							view_matrix[2] = view_matrix_temp[8];
-							view_matrix[3] = view_matrix_temp[12];
-							view_matrix[4] = view_matrix_temp[1];
-							view_matrix[5] = view_matrix_temp[5];
-							view_matrix[6] = view_matrix_temp[9];
-							view_matrix[7] = view_matrix_temp[13];
-							view_matrix[8] = view_matrix_temp[2];
-							view_matrix[9] = view_matrix_temp[6];
-							view_matrix[10] = view_matrix_temp[10];
-							view_matrix[11] = view_matrix_temp[14];
-							view_matrix[12] = view_matrix_temp[3];
-							view_matrix[13] = view_matrix_temp[7];
-							view_matrix[14] = view_matrix_temp[11];
-							view_matrix[15] = view_matrix[15];
-
-							screen_position = WorldToScreen(position);
-							
-							if (screen_position.z >= 0.01f)
+							if (flag)
 							{
-								D3DXVECTOR2 top = { screen_position.x, screen_position.y };
-								D3DXVECTOR2 bot = { screen_position.x, screen_position.y - 100 };
+								D3DXVECTOR3 position;
+								D3DXVECTOR3 screen_position;
+								ReadBytes((LPVOID)(address + unit_position_offset), 12, &position);
+								position = { position.x, position.y, position.z };
 
-								DrawLine(screen_width / 2, (float)(Form.bottom - Form.top), screen_position.x, screen_position.y, 5, 0XFF00FF00);
-								DrawEspBox(top, bot, 5, 0xFFFF0000);
+								ReadBytes((LPVOID)(g_game_dll_base + game_matrix_offset), 4, &view_matrix_temp.m);
+								ReadBytes((LPVOID)(*(DWORD*)&view_matrix_temp.m + game_matrix_p), 64, &view_matrix_temp.m);
+
+								view_matrix = view_matrix_temp;
+								view_matrix[0] = view_matrix_temp[0];
+								view_matrix[0] = view_matrix_temp[0];
+								view_matrix[1] = view_matrix_temp[4];
+								view_matrix[2] = view_matrix_temp[8];
+								view_matrix[3] = view_matrix_temp[12];
+								view_matrix[4] = view_matrix_temp[1];
+								view_matrix[5] = view_matrix_temp[5];
+								view_matrix[6] = view_matrix_temp[9];
+								view_matrix[7] = view_matrix_temp[13];
+								view_matrix[8] = view_matrix_temp[2];
+								view_matrix[9] = view_matrix_temp[6];
+								view_matrix[10] = view_matrix_temp[10];
+								view_matrix[11] = view_matrix_temp[14];
+								view_matrix[12] = view_matrix_temp[3];
+								view_matrix[13] = view_matrix_temp[7];
+								view_matrix[14] = view_matrix_temp[11];
+								view_matrix[15] = view_matrix[15];
+
+								screen_position = WorldToScreen(position);
+
+								if (screen_position.z >= 0.01f)
+								{
+									D3DXVECTOR2 top = { screen_position.x, screen_position.y };
+									D3DXVECTOR2 bot = { screen_position.x, screen_position.y - 80 };
+
+									//DrawLine(screen_width / 2, (float)(Form.bottom - Form.top), screen_position.x, screen_position.y, 5, 0XFF00FF00);
+									DrawEspBox(top, bot, 5, 0xFFFF0000);
+								}
 							}
 						}
-					}
-					else
-						break;
+						else
+							break;
 
-				ReadBytes((LPVOID)(unit_list), 4, &unit_list);
-				address = unit_list;
+					ReadBytes((LPVOID)(unit_list), 4, &unit_list);
+					address = unit_list;
+				}
 			}
+
+			/*ID3DXFont* d3dFont = NULL;
+			D3DXCreateFont(g_pd3dDevice, 50, 0, FW_NORMAL, 1, false, DEFAULT_CHARSET, OUT_DEVICE_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH, "Bahnschrift", &d3dFont);
+
+			RECT rect = { (LONG)Form.z / 2, (LONG)Form.w /2, (LONG)Form.z, (LONG)Form.w };
+
+			char buffer[MAX_PATH] = { 0 };
+
+			sprintf_s(buffer, "Camera X: %f", x);
+
+			d3dFont->DrawText(0, buffer, sizeof(buffer), &rect, 0, D3DCOLOR_ARGB(255, 255, 0, 0));
+
+			d3dFont->Release();*/
 		}
 
-		/*ID3DXFont* d3dFont = 0;
-		D3DXCreateFont(g_pd3dDevice, 50, 0, FW_NORMAL, 1, false, DEFAULT_CHARSET, OUT_DEVICE_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH, "Bahnschrift", &d3dFont);
-
-		RECT rect = { (LONG)Form.z / 2, (LONG)Form.w /2, (LONG)Form.z, (LONG)Form.w };
-		//RECT rect = { (LONG)Form.x, (LONG)Form.y, (LONG)Form.z, (LONG)Form.w };
-
-		char buffer[MAX_PATH] = { 0 };
-
-		float x;
-		float y;
-		if (ReadBytes((LPVOID)(g_game_dll_base + 0x00AB554C), 4, &x))
-			sprintf_s(buffer, "Camera X: %f", x);
-		else
-			sprintf_s(buffer, "readprocessmemory failed. %08X\n", GetLastError());
-
-		d3dFont->DrawText(0, buffer, sizeof(buffer), &rect, 0, D3DCOLOR_ARGB(255, 255, 0, 0));
-
-		if (ReadBytes((LPVOID)(g_game_dll_base + 0x00AB5550), 4, &y))
-			sprintf_s(buffer, "Camera Y: %f", y);
-		else
-			sprintf_s(buffer, "readprocessmemory failed. %08X\n", GetLastError());
-
-		rect.top += 50;
-
-		d3dFont->DrawText(0, buffer, sizeof(buffer), &rect, 0, D3DCOLOR_ARGB(255, 255, 0, 0));
-
 		g_pd3dDevice->EndScene();
-
-		d3dFont->Release();*/
 	}
-	g_pd3dDevice->EndScene();
 
 	g_pd3dDevice->Present(NULL, NULL, NULL, NULL);
 }
@@ -257,15 +243,15 @@ VOID DrawEspBox(D3DXVECTOR2 top, D3DXVECTOR2 bot, float thickness, D3DCOLOR colo
 
 D3DXVECTOR3 WorldToScreen(const D3DXVECTOR3 pos)
 {
-	float _x = view_matrix[0] * pos.x + view_matrix[1] * pos.y + view_matrix[2] * pos.z + view_matrix[3];
-	float _y = view_matrix[4] * pos.x + view_matrix[5] * pos.y + view_matrix[6] * pos.z + view_matrix[7];
+	float _x = view_matrix[0] * pos.x + view_matrix[1] * pos.y + view_matrix[2] * pos.z + view_matrix[3] - 34.5f;
+	float _y = view_matrix[4] * pos.x + view_matrix[5] * pos.y + view_matrix[6] * pos.z + view_matrix[7] + 80.f;
 
 	float w = view_matrix[12] * pos.x + view_matrix[13] * pos.y + view_matrix[14] * pos.z + view_matrix[15];
 	
 	float x = _x / w;
 	float y = _y / w / 1.35f;
 
-	x = (screen_width / 2.f * x) + (x + screen_width / 2.f) - 20.f;
+	x = (screen_width / 2.f * x) + (x + screen_width / 2.f);
 	y = -(screen_height / 2.f * y) + (y + screen_height / 2.f) - 50.f;
 	
 	return { x,y,w };
