@@ -9,7 +9,6 @@
 #pragma comment(lib, "d3dx9.lib")
 
 #include <Psapi.h>
-#include <VMProtectSDK.h>
 
 #include "protect.hpp"
 

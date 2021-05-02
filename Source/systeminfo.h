@@ -98,7 +98,7 @@ private:
 class CPUInfo
 {
 public:
-    CPUInfo::CPUInfo(const std::vector<std::string>& rawData, int cpuNumber);
+    CPUInfo(const std::vector<std::string>& rawData, int cpuNumber);
     std::string name() const;
     std::string manufacturer() const;
     std::string numberOfCores() const;
@@ -162,7 +162,7 @@ private:
 class GPUInfo
 {
 public:
-    GPUInfo::GPUInfo(const std::vector<std::string>& rawData, int cpuNumber);
+    GPUInfo(const std::vector<std::string>& rawData, int cpuNumber);
     std::string name() const;
     std::string manufacturer() const;
     std::string caption() const;
@@ -293,7 +293,7 @@ private:
 class OSInfo
 {
 public:
-    OSInfo::OSInfo(const std::vector<std::string>& rawData, int OSNumber);
+    OSInfo(const std::vector<std::string>& rawData, int OSNumber);
 
     std::string name() const;
     std::string manufacturer() const;
