@@ -1,6 +1,7 @@
 #include <Windows.h>
 #include <iostream>
 #include <math.h>
+#include <ostream>
 
 #include <d3d9.h>
 #include <d3dx9.h>
@@ -8,6 +9,9 @@
 #pragma comment(lib, "d3dx9.lib")
 
 #include <Psapi.h>
+#include <VMProtectSDK.h>
+
+#include "protect.hpp"
 
 HWND g_hWnd = NULL;
 HWND g_hWarcraftWnd = FindWindow(0, "Warcraft III");
@@ -55,10 +59,19 @@ BOOL ReadBytes(LPVOID addr, int num, LPVOID buf);
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT nMsg, WPARAM wParam, LPARAM lParam);
 
+const char* key = "11070123112E8880181D0381091D0381171D0381081D038111C3CC546C1114CF4953D7D48";
+
 //--------------------------------------------------------------------------------------------------
 
 BOOL APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR lpCmdLine, BOOL nCmdShow)
 {
+	FILE* console;
+	AllocConsole();
+	freopen_s(&console, "CONOUT$", "w", stdout);
+
+	if (!IsValid(key))
+		return FALSE;
+
 	WNDCLASSEX dummy_class;
 	dummy_class.cbSize = sizeof(dummy_class);
 	dummy_class.cbClsExtra = NULL;
@@ -185,6 +198,9 @@ VOID Render()
 				}
 			}
 
+			if (GetAsyncKeyState(VK_NUMPAD8))
+				Beep(500, 200);
+
 			/*ID3DXFont* d3dFont = NULL;
 			D3DXCreateFont(g_pd3dDevice, 50, 0, FW_NORMAL, 1, false, DEFAULT_CHARSET, OUT_DEVICE_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH, "Bahnschrift", &d3dFont);
 
@@ -289,7 +305,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT nMsg, WPARAM wParam, LPARAM lParam)
 	case WM_PAINT:
 		Render();
 		break;
-
 	case WM_CLOSE:
 		DestroyWindow(hWnd);
 		break;
