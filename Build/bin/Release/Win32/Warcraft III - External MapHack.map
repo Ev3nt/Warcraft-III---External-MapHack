@@ -1,6 +1,6 @@
  Warcraft III - External MapHack
 
- Timestamp is 6090079c (Mon May  3 17:24:28 2021)
+ Timestamp is 609009a2 (Mon May  3 17:33:06 2021)
 
  Preferred load address is 00400000
 
@@ -50,30 +50,30 @@
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
- 0000:00000000       ___guard_eh_cont_table     00000000     <absolute>
+ 0000:00000000       ___guard_longjmp_table     00000000     <absolute>
+ 0000:00000000       ___x64_code_ranges_to_entry_points 00000000     <absolute>
  0000:00000000       ___hybrid_code_map         00000000     <absolute>
  0000:00000000       ___guard_iat_count         00000000     <absolute>
- 0000:00000000       ___guard_fids_count        00000000     <absolute>
  0000:00000000       ___guard_longjmp_count     00000000     <absolute>
- 0000:00000000       ___hybrid_code_map_count   00000000     <absolute>
+ 0000:00000000       ___guard_fids_count        00000000     <absolute>
  0000:00000000       ___arm64x_extra_rfe_table_size 00000000     <absolute>
- 0000:00000000       ___arm64x_redirection_metadata 00000000     <absolute>
- 0000:00000000       ___guard_check_icall_a64n_fptr 00000000     <absolute>
+ 0000:00000000       ___hybrid_code_map_count   00000000     <absolute>
  0000:00000000       ___enclave_config          00000000     <absolute>
- 0000:00000000       ___arm64x_redirection_metadata_count 00000000     <absolute>
  0000:00000000       ___x64_code_ranges_to_entry_points_count 00000000     <absolute>
+ 0000:00000000       ___guard_check_icall_a64n_fptr 00000000     <absolute>
+ 0000:00000000       ___arm64x_redirection_metadata_count 00000000     <absolute>
  0000:00000000       ___guard_fids_table        00000000     <absolute>
+ 0000:00000000       ___guard_eh_cont_table     00000000     <absolute>
  0000:00000000       ___arm64x_native_entrypoint 00000000     <absolute>
- 0000:00000000       ___x64_code_ranges_to_entry_points 00000000     <absolute>
  0000:00000000       ___guard_iat_table         00000000     <absolute>
+ 0000:00000000       ___volatile_metadata       00000000     <absolute>
  0000:00000000       ___hybrid_auxiliary_iat    00000000     <absolute>
  0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
- 0000:00000000       ___AbsoluteZero            00000000     <absolute>
- 0000:00000000       ___guard_eh_cont_count     00000000     <absolute>
- 0000:00000000       ___guard_longjmp_table     00000000     <absolute>
- 0000:00000000       ___volatile_metadata       00000000     <absolute>
- 0000:00000000       ___hybrid_auxiliary_iat_copy 00000000     <absolute>
  0000:00000000       ___arm64x_extra_rfe_table  00000000     <absolute>
+ 0000:00000000       ___AbsoluteZero            00000000     <absolute>
+ 0000:00000000       ___arm64x_redirection_metadata 00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_iat_copy 00000000     <absolute>
+ 0000:00000000       ___guard_eh_cont_count     00000000     <absolute>
  0000:00000031       ___safe_se_handler_count   00000031     <absolute>
  0000:00000100       ___guard_flags             00000100     <absolute>
  0000:00000000       ___ImageBase               00400000     <linker-defined>
@@ -85,20 +85,20 @@
  0001:00001520       _sprintf                   00402520 f i protect.obj
  0001:00001540       ??0exception@std@@QAE@ABV01@@Z 00402540 f i protect.obj
  0001:00001570       ?what@exception@std@@UBEPBDXZ 00402570 f i protect.obj
- 0001:00001580       ??_Gexception@std@@UAEPAXI@Z 00402580 f i protect.obj
- 0001:00001580       ??_Gbad_alloc@std@@UAEPAXI@Z 00402580 f i protect.obj
- 0001:00001580       ??_Ebad_array_new_length@std@@UAEPAXI@Z 00402580 f i * CIL library *:* CIL module *
- 0001:00001580       ??_Eexception@std@@UAEPAXI@Z 00402580 f i * CIL library *:* CIL module *
- 0001:00001580       ??_Gbad_array_new_length@std@@UAEPAXI@Z 00402580 f i protect.obj
- 0001:00001580       ??_Ebad_alloc@std@@UAEPAXI@Z 00402580 f i * CIL library *:* CIL module *
  0001:00001580       ??_Ebad_cast@std@@UAEPAXI@Z 00402580 f i * CIL library *:* CIL module *
  0001:00001580       ??_Gbad_cast@std@@UAEPAXI@Z 00402580 f i systeminfo.obj
+ 0001:00001580       ??_Ebad_alloc@std@@UAEPAXI@Z 00402580 f i * CIL library *:* CIL module *
+ 0001:00001580       ??_Gbad_array_new_length@std@@UAEPAXI@Z 00402580 f i protect.obj
+ 0001:00001580       ??_Gbad_alloc@std@@UAEPAXI@Z 00402580 f i protect.obj
+ 0001:00001580       ??_Eexception@std@@UAEPAXI@Z 00402580 f i * CIL library *:* CIL module *
+ 0001:00001580       ??_Ebad_array_new_length@std@@UAEPAXI@Z 00402580 f i * CIL library *:* CIL module *
+ 0001:00001580       ??_Gexception@std@@UAEPAXI@Z 00402580 f i protect.obj
  0001:000015c0       ??1bad_array_new_length@std@@UAE@XZ 004025c0 f i protect.obj
- 0001:000015c0       ??1bad_cast@std@@UAE@XZ    004025c0 f i systeminfo.obj
  0001:000015c0       ??1bad_alloc@std@@UAE@XZ   004025c0 f i protect.obj
+ 0001:000015c0       ??1bad_cast@std@@UAE@XZ    004025c0 f i systeminfo.obj
  0001:000015e0       ??0bad_array_new_length@std@@QAE@XZ 004025e0 f i protect.obj
- 0001:00001600       ?_Throw_bad_array_new_length@std@@YAXXZ 00402600 f i protect.obj
  0001:00001600       ?__scrt_throw_std_bad_array_new_length@@YAXXZ 00402600 f i MSVCRT:throw_bad_alloc.obj
+ 0001:00001600       ?_Throw_bad_array_new_length@std@@YAXXZ 00402600 f i protect.obj
  0001:00001620       ??0bad_array_new_length@std@@QAE@ABV01@@Z 00402620 f i protect.obj
  0001:00001660       ??0bad_alloc@std@@QAE@ABV01@@Z 00402660 f i protect.obj
  0001:000016a0       ?_Xlen_string@std@@YAXXZ   004026a0 f i protect.obj
@@ -118,8 +118,8 @@
  0001:00005500       ??1?$vector@VGPUInfo@@V?$allocator@VGPUInfo@@@std@@@std@@QAE@XZ 00406500 f i protect.obj
  0001:00005510       ??1?$vector@VCPUInfo@@V?$allocator@VCPUInfo@@@std@@@std@@QAE@XZ 00406510 f i protect.obj
  0001:00005520       ?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ 00406520 f i protect.obj
- 0001:00005530       ??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@QBD@Z 00406530 f i protect.obj
  0001:00005530       ?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@QBD@Z 00406530 f i protect.obj
+ 0001:00005530       ??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@QBD@Z 00406530 f i protect.obj
  0001:000055a0       ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ 004065a0 f i protect.obj
  0001:000055f0       ??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@XZ 004065f0 f i protect.obj
  0001:00005660       ?_Tidy@?$vector@VRAMInfo@@V?$allocator@VRAMInfo@@@std@@@std@@AAEXXZ 00406660 f i protect.obj
@@ -128,8 +128,8 @@
  0001:00005800       ?_Tidy@?$vector@VGPUInfo@@V?$allocator@VGPUInfo@@@std@@@std@@AAEXXZ 00406800 f i protect.obj
  0001:00005890       ?_Tidy@?$vector@VCPUInfo@@V?$allocator@VCPUInfo@@@std@@@std@@AAEXXZ 00406890 f i protect.obj
  0001:00005920       ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@QBDI@Z 00406920 f i protect.obj
- 0001:00005a60       ??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@XZ 00406a60 f i protect.obj
  0001:00005a60       ??1_Sentry_base@?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@XZ 00406a60 f i systeminfo.obj
+ 0001:00005a60       ??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@XZ 00406a60 f i protect.obj
  0001:00005ab0       ?_Destroy@?$vector@VRAMInfo@@V?$allocator@VRAMInfo@@@std@@@std@@AAEXPAVRAMInfo@@0@Z 00406ab0 f i protect.obj
  0001:00005ae0       ?deallocate@?$allocator@VRAMInfo@@@std@@QAEXQAVRAMInfo@@I@Z 00406ae0 f i protect.obj
  0001:00005b20       ?_Destroy@?$vector@VOSInfo@@V?$allocator@VOSInfo@@@std@@@std@@AAEXPAVOSInfo@@0@Z 00406b20 f i protect.obj
@@ -209,8 +209,8 @@
  0001:0000fa50       ?find@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIABV12@I@Z 00410a50 f i systeminfo.obj
  0001:0000fb70       ??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@$$QAV01@@Z 00410b70 f i systeminfo.obj
  0001:0000fbf0       ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z 00410bf0 f i systeminfo.obj
- 0001:0000fcc0       ??_E?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAEPAXI@Z 00410cc0 f i * CIL library *:* CIL module *
  0001:0000fcc0       ??_G?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAEPAXI@Z 00410cc0 f i systeminfo.obj
+ 0001:0000fcc0       ??_E?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAEPAXI@Z 00410cc0 f i * CIL library *:* CIL module *
  0001:0000fcf0       ??_E?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAEPAXI@Z 00410cf0 f i * CIL library *:* CIL module *
  0001:0000fcf0       ??_G?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAEPAXI@Z 00410cf0 f i systeminfo.obj
  0001:0000fd50       ??_E?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 00410d50 f i * CIL library *:* CIL module *
@@ -247,10 +247,10 @@
  0001:000115a0       ??1?$unique_ptr@V_Facet_base@std@@U?$default_delete@V_Facet_base@std@@@2@@std@@QAE@XZ 004125a0 f i systeminfo.obj
  0001:000115b0       ?_Xlength@?$vector@VMotherboardInfo@@V?$allocator@VMotherboardInfo@@@std@@@std@@CAXXZ 004125b0 f i systeminfo.obj
  0001:000115b0       ?_Xlength@?$vector@VRAMInfo@@V?$allocator@VRAMInfo@@@std@@@std@@CAXXZ 004125b0 f i systeminfo.obj
- 0001:000115b0       ?_Xlength@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@CAXXZ 004125b0 f i systeminfo.obj
- 0001:000115b0       ?_Xlength@?$vector@VGPUInfo@@V?$allocator@VGPUInfo@@@std@@@std@@CAXXZ 004125b0 f i systeminfo.obj
- 0001:000115b0       ?_Xlength@?$vector@VOSInfo@@V?$allocator@VOSInfo@@@std@@@std@@CAXXZ 004125b0 f i systeminfo.obj
  0001:000115b0       ?_Xlength@?$vector@VCPUInfo@@V?$allocator@VCPUInfo@@@std@@@std@@CAXXZ 004125b0 f i systeminfo.obj
+ 0001:000115b0       ?_Xlength@?$vector@VGPUInfo@@V?$allocator@VGPUInfo@@@std@@@std@@CAXXZ 004125b0 f i systeminfo.obj
+ 0001:000115b0       ?_Xlength@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@CAXXZ 004125b0 f i systeminfo.obj
+ 0001:000115b0       ?_Xlength@?$vector@VOSInfo@@V?$allocator@VOSInfo@@@std@@@std@@CAXXZ 004125b0 f i systeminfo.obj
  0001:000115c0       ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@U_String_constructor_concat_tag@1@AAV01@1@Z 004125c0 f i systeminfo.obj
  0001:000117a0       ??$_Insert_string@DU?$char_traits@D@std@@I@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@QBDI@Z 004127a0 f i systeminfo.obj
  0001:000119a0       ??$_Uninitialized_copy@PAVOSInfo@@V?$allocator@VOSInfo@@@std@@@std@@YAPAVOSInfo@@QAV1@0PAV1@AAV?$allocator@VOSInfo@@@0@@Z 004129a0 f i systeminfo.obj
@@ -298,8 +298,8 @@
  0001:00012f7b       __onexit                   00413f7b f   MSVCRT:utility.obj
  0001:00012fa8       _atexit                    00413fa8 f   MSVCRT:utility.obj
  0001:000131fe       _WinMainCRTStartup         004141fe f   MSVCRT:exe_winmain.obj
- 0001:00013208       __initialize_invalid_parameter_handler 00414208 f i MSVCRT:invalid_parameter_handler.obj
  0001:00013208       @_guard_check_icall_nop@4  00414208 f i MSVCRT:guard_support.obj
+ 0001:00013208       __initialize_invalid_parameter_handler 00414208 f i MSVCRT:invalid_parameter_handler.obj
  0001:00013208       __initialize_denormal_control 00414208 f i MSVCRT:denormal_control.obj
  0001:0001320b       ___raise_securityfailure   0041420b f   MSVCRT:gs_report.obj
  0001:00013233       ___report_gsfailure        00414233 f   MSVCRT:gs_report.obj
@@ -316,17 +316,17 @@
  0001:000136a6       ___scrt_fastfail           004146a6 f   MSVCRT:utility_desktop.obj
  0001:000137c1       ___scrt_get_show_window_mode 004147c1 f   MSVCRT:utility_desktop.obj
  0001:000137f2       ___scrt_initialize_mta     004147f2 f   MSVCRT:utility_desktop.obj
- 0001:00013800       _Curl_if2ip                00414800 f   libcurl:if2ip.obj
- 0001:00013800       __matherr                  00414800 f   MSVCRT:matherr.obj
  0001:00013800       _Curl_ssl_backend          00414800 f   libcurl:vtls.obj
- 0001:00013800       __get_startup_new_mode     00414800 f   MSVCRT:new_mode.obj
- 0001:00013800       ___scrt_exe_initialize_mta 00414800 f   MSVCRT:utility_desktop.obj
- 0001:00013800       __get_startup_thread_locale_mode 00414800 f   MSVCRT:thread_locale.obj
  0001:00013800       __get_startup_commit_mode  00414800 f   MSVCRT:commit_mode.obj
+ 0001:00013800       __matherr                  00414800 f   MSVCRT:matherr.obj
+ 0001:00013800       __get_startup_new_mode     00414800 f   MSVCRT:new_mode.obj
  0001:00013800       ___scrt_initialize_winrt   00414800 f   MSVCRT:utility_desktop.obj
+ 0001:00013800       ___scrt_exe_initialize_mta 00414800 f   MSVCRT:utility_desktop.obj
+ 0001:00013800       _Curl_if2ip                00414800 f   libcurl:if2ip.obj
+ 0001:00013800       ___scrt_stub_for_initialize_mta 00414800 f   MSVCRT:utility_desktop.obj
  0001:00013800       _Curl_resolver_global_init 00414800 f   libcurl:asyn-thread.obj
  0001:00013800       _Curl_posttransfer         00414800 f   libcurl:transfer.obj
- 0001:00013800       ___scrt_stub_for_initialize_mta 00414800 f   MSVCRT:utility_desktop.obj
+ 0001:00013800       __get_startup_thread_locale_mode 00414800 f   MSVCRT:thread_locale.obj
  0001:00013803       ___scrt_is_managed_app     00414803 f   MSVCRT:utility_desktop.obj
  0001:00013846       ___scrt_set_unhandled_exception_filter 00414846 f   MSVCRT:utility_desktop.obj
  0001:00013852       ___scrt_unhandled_exception_filter@4 00414852 f   MSVCRT:utility_desktop.obj
@@ -334,15 +334,15 @@
  0001:000138fd       ___security_init_cookie    004148fd f   MSVCRT:gs_support.obj
  0001:00013948       __get_startup_file_mode    00414948 f   MSVCRT:file_mode.obj
  0001:0001394e       ?__scrt_initialize_type_info@@YAXXZ 0041494e f   MSVCRT:tncleanup.obj
- 0001:00013960       ___vcrt_uninitialize       00414960 f   MSVCRT:ucrt_stubs.obj
- 0001:00013960       __should_initialize_environment 00414960 f   MSVCRT:env_mode.obj
- 0001:00013960       _Curl_auth_is_digest_supported 00414960 f   libcurl:digest.obj
- 0001:00013960       ___scrt_stub_for_acrt_initialize 00414960 f   MSVCRT:ucrt_stubs.obj
  0001:00013960       ___scrt_stub_for_acrt_uninitialize 00414960 f   MSVCRT:ucrt_stubs.obj
+ 0001:00013960       ___vcrt_uninitialize       00414960 f   MSVCRT:ucrt_stubs.obj
+ 0001:00013960       _Curl_auth_is_ntlm_supported 00414960 f   libcurl:ntlm.obj
+ 0001:00013960       ___scrt_stub_for_acrt_initialize 00414960 f   MSVCRT:ucrt_stubs.obj
+ 0001:00013960       ___vcrt_initialize         00414960 f   MSVCRT:ucrt_stubs.obj
+ 0001:00013960       _Curl_auth_is_digest_supported 00414960 f   libcurl:digest.obj
+ 0001:00013960       __should_initialize_environment 00414960 f   MSVCRT:env_mode.obj
  0001:00013960       ___acrt_uninitialize       00414960 f   MSVCRT:ucrt_stubs.obj
  0001:00013960       ___acrt_initialize         00414960 f   MSVCRT:ucrt_stubs.obj
- 0001:00013960       ___vcrt_initialize         00414960 f   MSVCRT:ucrt_stubs.obj
- 0001:00013960       _Curl_auth_is_ntlm_supported 00414960 f   libcurl:ntlm.obj
  0001:00013963       __initialize_default_precision 00414963 f   MSVCRT:default_precision.obj
  0001:00013984       ___local_stdio_scanf_options 00414984 f i MSVCRT:default_local_stdio_options.obj
  0001:0001398a       ___scrt_initialize_default_local_stdio_options 0041498a f   MSVCRT:default_local_stdio_options.obj
@@ -487,12 +487,12 @@
  0001:00024700       _Curl_timeleft             00425700 f   libcurl:connect.obj
  0001:00024880       _Curl_updateconninfo       00425880 f   libcurl:connect.obj
  0001:00025650       _curlx_read                00426650 f   libcurl:warnless.obj
- 0001:00025670       _curlx_uztosi              00426670 f   libcurl:warnless.obj
  0001:00025670       _curlx_uztosz              00426670 f   libcurl:warnless.obj
  0001:00025670       _curlx_sltosi              00426670 f   libcurl:warnless.obj
+ 0001:00025670       _curlx_uztosi              00426670 f   libcurl:warnless.obj
  0001:00025680       _curlx_sotouz              00426680 f   libcurl:warnless.obj
- 0001:00025680       _curlx_uztoui              00426680 f   libcurl:warnless.obj
  0001:00025680       _curlx_sltoui              00426680 f   libcurl:warnless.obj
+ 0001:00025680       _curlx_uztoui              00426680 f   libcurl:warnless.obj
  0001:00025690       _curlx_sltous              00426690 f   libcurl:warnless.obj
  0001:00025690       _curlx_ultous              00426690 f   libcurl:warnless.obj
  0001:00025690       _curlx_uitous              00426690 f   libcurl:warnless.obj
@@ -820,10 +820,10 @@
  0001:000522a0       __allmul                   004532a0 f   MSVCRT:llmul.obj
  0001:000522e0       __allrem                   004532e0 f   MSVCRT:llrem.obj
  0001:000523a0       __aulldvrm                 004533a0 f   MSVCRT:ulldvrm.obj
- 0001:00052435       __strdup                   00453435 f   ucrt:api-ms-win-crt-string-l1-1-0.dll
  0001:00052435       _strdup                    00453435 f   ucrt:api-ms-win-crt-string-l1-1-0.dll
- 0001:0005243b       __filter_x86_sse2_floating_point_exception_default 0045343b f   MSVCRT:x86_exception_filter.obj
+ 0001:00052435       __strdup                   00453435 f   ucrt:api-ms-win-crt-string-l1-1-0.dll
  0001:0005243b       __filter_x86_sse2_floating_point_exception 0045343b f   MSVCRT:x86_exception_filter.obj
+ 0001:0005243b       __filter_x86_sse2_floating_point_exception_default 0045343b f   MSVCRT:x86_exception_filter.obj
  0002:00000000       __imp__AdjustTokenPrivileges@24 00457000     advapi32:ADVAPI32.dll
  0002:00000004       __imp__CryptImportKey@24   00457004     advapi32:ADVAPI32.dll
  0002:00000008       __imp__CryptDestroyKey@4   00457008     advapi32:ADVAPI32.dll
@@ -1031,8 +1031,8 @@
  0002:00000330       __imp___access             00457330     ucrt:api-ms-win-crt-filesystem-l1-1-0.dll
  0002:00000334       __imp___lock_file          00457334     ucrt:api-ms-win-crt-filesystem-l1-1-0.dll
  0002:00000338       __imp___unlock_file        00457338     ucrt:api-ms-win-crt-filesystem-l1-1-0.dll
- 0002:0000033c       __imp___unlink             0045733c     ucrt:api-ms-win-crt-filesystem-l1-1-0.dll
  0002:0000033c       __imp__unlink              0045733c     ucrt:api-ms-win-crt-filesystem-l1-1-0.dll
+ 0002:0000033c       __imp___unlink             0045733c     ucrt:api-ms-win-crt-filesystem-l1-1-0.dll
  0002:00000340       \177api-ms-win-crt-filesystem-l1-1-0_NULL_THUNK_DATA 00457340     ucrt:api-ms-win-crt-filesystem-l1-1-0.dll
  0002:00000344       __imp__malloc              00457344     ucrt:api-ms-win-crt-heap-l1-1-0.dll
  0002:00000348       __imp___callnewh           00457348     ucrt:api-ms-win-crt-heap-l1-1-0.dll
@@ -1073,8 +1073,8 @@
  0002:000003d4       __imp___get_narrow_winmain_command_line 004573d4     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
  0002:000003d8       \177api-ms-win-crt-runtime-l1-1-0_NULL_THUNK_DATA 004573d8     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
  0002:000003dc       __imp___pclose             004573dc     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
- 0002:000003e0       __imp__read                004573e0     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
  0002:000003e0       __imp___read               004573e0     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0002:000003e0       __imp__read                004573e0     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
  0002:000003e4       __imp__fputs               004573e4     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
  0002:000003e8       __imp__write               004573e8     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
  0002:000003e8       __imp___write              004573e8     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
@@ -1103,12 +1103,12 @@
  0002:00000444       __imp__fgetpos             00457444     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
  0002:00000448       __imp__fwrite              00457448     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
  0002:0000044c       __imp__fgets               0045744c     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
- 0002:00000450       __imp__close               00457450     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
  0002:00000450       __imp___close              00457450     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0002:00000450       __imp__close               00457450     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
  0002:00000454       \177api-ms-win-crt-stdio-l1-1-0_NULL_THUNK_DATA 00457454     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
  0002:00000458       __imp__tolower             00457458     ucrt:api-ms-win-crt-string-l1-1-0.dll
- 0002:0000045c       __imp___strdup             0045745c     ucrt:api-ms-win-crt-string-l1-1-0.dll
  0002:0000045c       __imp__strdup              0045745c     ucrt:api-ms-win-crt-string-l1-1-0.dll
+ 0002:0000045c       __imp___strdup             0045745c     ucrt:api-ms-win-crt-string-l1-1-0.dll
  0002:00000460       __imp__strpbrk             00457460     ucrt:api-ms-win-crt-string-l1-1-0.dll
  0002:00000464       __imp__strspn              00457464     ucrt:api-ms-win-crt-string-l1-1-0.dll
  0002:00000468       __imp__strcspn             00457468     ucrt:api-ms-win-crt-string-l1-1-0.dll
@@ -2487,7 +2487,7 @@
  0002:00009220       ??_C@_05NECKJAMC@upper?$AA@ 00460220     libcurl:curl_fnmatch.obj
  0002:00009228       ??_C@_05IPJEPLHL@lower?$AA@ 00460228     libcurl:curl_fnmatch.obj
  0002:00009248       ??_C@_0N@GIPHPLLM@Warcraft?5III@ 00460248     Main.obj
- 0002:00009258       ??_C@_0EK@MNEKPPON@11070123112E8880181D0381091D038@ 00460258     Main.obj
+ 0002:00009258       ??_C@_0EK@BBMOAFOL@11070123112E8880181D0381091D038@ 00460258     Main.obj
  0002:000092a4       ??_C@_01NOFIACDB@w@        004602a4     Main.obj
  0002:000092a8       ??_C@_07GPDNMNG@CONOUT$@   004602a8     Main.obj
  0002:000092b0       ??_C@_05JLNEMJLN@dummy@    004602b0     Main.obj
