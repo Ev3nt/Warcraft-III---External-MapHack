@@ -396,13 +396,21 @@ GPUInfo::GPUInfo(const std::vector<std::string>& rawData, int gpuNumber) :
 std::string GPUInfo::getVideoArchitecture(const std::string& videoArchitectureString) const
 {
     int videoArch{ 2 };
-    try {
+    bool IsNotInt = false;
+
+    for (const auto& e : videoArchitectureString)
+        if (e > 9)
+        {
+            IsNotInt = true;
+
+            break;
+        }
+
+    if (!IsNotInt)
         videoArch = std::stoi(videoArchitectureString);
-    }
-    catch (std::exception& e) {
-        (void)e;
+    else
         videoArch = 2;
-    }
+  
     //As per https://msdn.microsoft.com/en-us/library/aa394512(v=vs.85).aspx
     switch (videoArch) {
     case 1: return "Other";
@@ -425,13 +433,21 @@ std::string GPUInfo::getVideoArchitecture(const std::string& videoArchitectureSt
 std::string GPUInfo::getVideoMemoryType(const std::string& videoMemoryTypeString) const
 {
     int videoMemoryType{ 2 };
-    try {
+    bool IsNotInt = false;
+
+    for (const auto& e : videoMemoryTypeString)
+        if (e > 9)
+        {
+            IsNotInt = true;
+
+            break;
+        }
+
+    if (!IsNotInt)
         videoMemoryType = std::stoi(videoMemoryTypeString);
-    }
-    catch (std::exception& e) {
-        (void)e;
+    else
         videoMemoryType = 2;
-    }
+
     switch (videoMemoryType) {
     case 1: return "Other";
     case 2: return "Unknown";
