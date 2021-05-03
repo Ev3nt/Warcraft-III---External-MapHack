@@ -1,6 +1,6 @@
  Warcraft III - External MapHack
 
- Timestamp is 60900339 (Mon May  3 17:05:45 2021)
+ Timestamp is 60900621 (Mon May  3 17:18:09 2021)
 
  Preferred load address is 00400000
 
@@ -72,85 +72,85 @@
  0001:00002060       ?KEY@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ 00403060 f   protect.obj
  0001:000046a0       ?write_to_string@@YAIPAXII0@Z 004056a0 f   protect.obj
  0001:00004750       ?IsValidTime@@YA_NHHH@Z    00405750 f   protect.obj
- 0001:00004950       ??1?$unique_ptr@VOSInfoDelegate@@U?$default_delete@VOSInfoDelegate@@@std@@@std@@QAE@XZ 00405950 f i protect.obj
- 0001:00004970       ??1?$unique_ptr@VGPUInfoDelegate@@U?$default_delete@VGPUInfoDelegate@@@std@@@std@@QAE@XZ 00405970 f i protect.obj
- 0001:00004990       ??1?$unique_ptr@VRAMInfoDelegate@@U?$default_delete@VRAMInfoDelegate@@@std@@@std@@QAE@XZ 00405990 f i protect.obj
- 0001:000049b0       ??1?$unique_ptr@VMotherboardInfoDelegate@@U?$default_delete@VMotherboardInfoDelegate@@@std@@@std@@QAE@XZ 004059b0 f i protect.obj
- 0001:000049d0       ??1?$unique_ptr@VCPUInfoDelegate@@U?$default_delete@VCPUInfoDelegate@@@std@@@std@@QAE@XZ 004059d0 f i protect.obj
- 0001:000049f0       ??1?$vector@VRAMInfo@@V?$allocator@VRAMInfo@@@std@@@std@@QAE@XZ 004059f0 f i protect.obj
- 0001:00004a00       ??1?$vector@VOSInfo@@V?$allocator@VOSInfo@@@std@@@std@@QAE@XZ 00405a00 f i protect.obj
- 0001:00004a10       ??1?$vector@VMotherboardInfo@@V?$allocator@VMotherboardInfo@@@std@@@std@@QAE@XZ 00405a10 f i protect.obj
- 0001:00004a20       ??1?$vector@VGPUInfo@@V?$allocator@VGPUInfo@@@std@@@std@@QAE@XZ 00405a20 f i protect.obj
- 0001:00004a30       ??1?$vector@VCPUInfo@@V?$allocator@VCPUInfo@@@std@@@std@@QAE@XZ 00405a30 f i protect.obj
- 0001:00004a40       ?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z 00405a40 f i protect.obj
- 0001:00004a80       ?_Myptr@?$_String_val@U?$_Simple_types@D@std@@@std@@QAEPADXZ 00405a80 f i protect.obj
- 0001:00004a80       ?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ 00405a80 f i protect.obj
- 0001:00004a90       ?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z 00405a90 f i protect.obj
- 0001:00004b80       ??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z 00405b80 f i protect.obj
- 0001:00004bc0       ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ 00405bc0 f i protect.obj
- 0001:00004c00       ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@$$QAV01@@Z 00405c00 f i protect.obj
- 0001:00004c80       ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z 00405c80 f i protect.obj
- 0001:00004ce0       _Curl_free_idnconverted_hostname 00405ce0 f i libcurl:url.obj
- 0001:00004ce0       @_guard_check_icall_nop@4  00405ce0 f i MSVCRT:guard_support.obj
- 0001:00004ce0       __initialize_denormal_control 00405ce0 f i MSVCRT:denormal_control.obj
- 0001:00004ce0       ??1?$_String_alloc@U?$_String_base_types@DV?$allocator@D@std@@@std@@@std@@QAE@XZ 00405ce0 f i protect.obj
- 0001:00004ce0       __initialize_invalid_parameter_handler 00405ce0 f i MSVCRT:invalid_parameter_handler.obj
- 0001:00004ce0       ??3@YAXPAX0@Z              00405ce0 f i systeminfo.obj
- 0001:00004cf0       ?_Tidy@?$vector@VRAMInfo@@V?$allocator@VRAMInfo@@@std@@@std@@IAEXXZ 00405cf0 f i protect.obj
- 0001:00004d50       ?_Tidy@?$vector@VOSInfo@@V?$allocator@VOSInfo@@@std@@@std@@IAEXXZ 00405d50 f i protect.obj
- 0001:00004db0       ?_Tidy@?$vector@VMotherboardInfo@@V?$allocator@VMotherboardInfo@@@std@@@std@@IAEXXZ 00405db0 f i protect.obj
- 0001:00004e10       ?_Tidy@?$vector@VGPUInfo@@V?$allocator@VGPUInfo@@@std@@@std@@IAEXXZ 00405e10 f i protect.obj
- 0001:00004e70       ?_Tidy@?$vector@VCPUInfo@@V?$allocator@VCPUInfo@@@std@@@std@@IAEXXZ 00405e70 f i protect.obj
- 0001:00004ed0       ??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@XZ 00405ed0 f i protect.obj
- 0001:00004f40       ?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE_NI_N@Z 00405f40 f i protect.obj
- 0001:00004ff0       ?_Eos@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXI@Z 00405ff0 f i protect.obj
- 0001:00005020       ?_Traits_compare@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@SAHQBDI0I@Z 00406020 f i protect.obj
- 0001:000050b0       ?erase@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@II@Z 004060b0 f i protect.obj
- 0001:00005150       ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z 00406150 f i protect.obj
- 0001:00005250       ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z 00406250 f i protect.obj
- 0001:00005370       ?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z 00406370 f i protect.obj
- 0001:00005490       ?_Assign_rv@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEX$$QAV12@@Z 00406490 f i protect.obj
- 0001:00005500       ?deallocate@?$_Wrap_alloc@V?$allocator@VRAMInfo@@@std@@@std@@QAEXPAVRAMInfo@@I@Z 00406500 f i protect.obj
- 0001:00005570       ?deallocate@?$_Wrap_alloc@V?$allocator@VOSInfo@@@std@@@std@@QAEXPAVOSInfo@@I@Z 00406570 f i protect.obj
- 0001:000055e0       ?deallocate@?$_Wrap_alloc@V?$allocator@VMotherboardInfo@@@std@@@std@@QAEXPAVMotherboardInfo@@I@Z 004065e0 f i protect.obj
- 0001:00005640       ?deallocate@?$_Wrap_alloc@V?$allocator@VGPUInfo@@@std@@@std@@QAEXPAVGPUInfo@@I@Z 00406640 f i protect.obj
- 0001:000056b0       ?deallocate@?$_Wrap_alloc@V?$allocator@VCPUInfo@@@std@@@std@@QAEXPAVCPUInfo@@I@Z 004066b0 f i protect.obj
- 0001:00005720       ??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@XZ 00406720 f i protect.obj
- 0001:00005720       ??1_Sentry_base@?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@XZ 00406720 f i systeminfo.obj
- 0001:00005770       ?deallocate@?$_Wrap_alloc@V?$allocator@D@std@@@std@@QAEXPADI@Z 00406770 f i protect.obj
- 0001:00005770       ?deallocate@?$allocator@D@std@@QAEXPADI@Z 00406770 f i protect.obj
- 0001:000057c0       ?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z 004067c0 f i protect.obj
- 0001:00005950       ?allocate@?$allocator@D@std@@QAEPADI@Z 00406950 f i protect.obj
- 0001:00005950       ?allocate@?$_Wrap_alloc@V?$allocator@D@std@@@std@@QAEPADI@Z 00406950 f i protect.obj
- 0001:000059a0       ??$_Integral_to_string@DH@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@H@Z 004069a0 f i protect.obj
- 0001:00005a60       ??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z 00406a60 f i protect.obj
- 0001:00005ca0       ??$endl@DU?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@@Z 00406ca0 f i protect.obj
- 0001:00005cd0       ??$make_unique@VCPUInfoDelegate@@$$V@std@@YA?AV?$unique_ptr@VCPUInfoDelegate@@U?$default_delete@VCPUInfoDelegate@@@std@@@0@XZ 00406cd0 f i protect.obj
- 0001:00005d50       ??$make_unique@VMotherboardInfoDelegate@@$$V@std@@YA?AV?$unique_ptr@VMotherboardInfoDelegate@@U?$default_delete@VMotherboardInfoDelegate@@@std@@@0@XZ 00406d50 f i protect.obj
- 0001:00005dd0       ??$make_unique@VRAMInfoDelegate@@$$V@std@@YA?AV?$unique_ptr@VRAMInfoDelegate@@U?$default_delete@VRAMInfoDelegate@@@std@@@0@XZ 00406dd0 f i protect.obj
- 0001:00005e50       ??$make_unique@VGPUInfoDelegate@@$$V@std@@YA?AV?$unique_ptr@VGPUInfoDelegate@@U?$default_delete@VGPUInfoDelegate@@@std@@@0@XZ 00406e50 f i protect.obj
- 0001:00005ed0       ??$make_unique@VOSInfoDelegate@@$$V@std@@YA?AV?$unique_ptr@VOSInfoDelegate@@U?$default_delete@VOSInfoDelegate@@@std@@@0@XZ 00406ed0 f i protect.obj
- 0001:00005f50       ??$destroy@PAD@?$_Wrap_alloc@V?$allocator@D@std@@@std@@QAEXPAPAD@Z 00406f50 f i protect.obj
- 0001:00005f60       ??$_Destroy_range@V?$allocator@VRAMInfo@@@std@@PAVRAMInfo@@@std@@YAXPAVRAMInfo@@0AAU?$_Wrap_alloc@V?$allocator@VRAMInfo@@@std@@@0@@Z 00406f60 f i protect.obj
- 0001:00005f90       ??$_Destroy_range@V?$allocator@VOSInfo@@@std@@PAVOSInfo@@@std@@YAXPAVOSInfo@@0AAU?$_Wrap_alloc@V?$allocator@VOSInfo@@@std@@@0@@Z 00406f90 f i protect.obj
- 0001:00005fc0       ??$_Destroy_range@V?$allocator@VMotherboardInfo@@@std@@PAVMotherboardInfo@@@std@@YAXPAVMotherboardInfo@@0AAU?$_Wrap_alloc@V?$allocator@VMotherboardInfo@@@std@@@0@@Z 00406fc0 f i protect.obj
- 0001:00005ff0       ??$_Destroy_range@V?$allocator@VGPUInfo@@@std@@PAVGPUInfo@@@std@@YAXPAVGPUInfo@@0AAU?$_Wrap_alloc@V?$allocator@VGPUInfo@@@std@@@0@@Z 00406ff0 f i protect.obj
- 0001:00006020       ??$_Destroy_range@V?$allocator@VCPUInfo@@@std@@PAVCPUInfo@@@std@@YAXPAVCPUInfo@@0AAU?$_Wrap_alloc@V?$allocator@VCPUInfo@@@std@@@0@@Z 00407020 f i protect.obj
- 0001:00006050       ??0?$_Wrap_alloc@V?$allocator@D@std@@@std@@QAE@XZ 00407050 f i protect.obj
- 0001:00006060       ??1RAMInfo@@QAE@XZ         00407060 f i protect.obj
- 0001:000061e0       ??1OSInfo@@QAE@XZ          004071e0 f i protect.obj
- 0001:00006480       ??1MotherboardInfo@@QAE@XZ 00407480 f i protect.obj
- 0001:00006570       ??1GPUInfo@@QAE@XZ         00407570 f i protect.obj
- 0001:00006750       ??1CPUInfo@@QAE@XZ         00407750 f i protect.obj
- 0001:00006870       ??0exception@std@@QAE@ABV01@@Z 00407870 f i systeminfo.obj
- 0001:000068a0       ?what@exception@std@@UBEPBDXZ 004078a0 f i systeminfo.obj
- 0001:000068b0       ??_Ebad_cast@std@@UAEPAXI@Z 004078b0 f i * CIL library *:* CIL module *
- 0001:000068b0       ??_Gbad_cast@std@@UAEPAXI@Z 004078b0 f i systeminfo.obj
- 0001:000068b0       ??_Gexception@std@@UAEPAXI@Z 004078b0 f i systeminfo.obj
- 0001:000068b0       ??_Eexception@std@@UAEPAXI@Z 004078b0 f i * CIL library *:* CIL module *
- 0001:000068f0       ??1bad_cast@std@@UAE@XZ    004078f0 f i systeminfo.obj
- 0001:00006910       ??1locale@std@@QAE@XZ      00407910 f i systeminfo.obj
- 0001:00006960       ?stoll@std@@YA_JABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@PAIH@Z 00407960 f i systeminfo.obj
+ 0001:00004940       ??1?$unique_ptr@VOSInfoDelegate@@U?$default_delete@VOSInfoDelegate@@@std@@@std@@QAE@XZ 00405940 f i protect.obj
+ 0001:00004960       ??1?$unique_ptr@VGPUInfoDelegate@@U?$default_delete@VGPUInfoDelegate@@@std@@@std@@QAE@XZ 00405960 f i protect.obj
+ 0001:00004980       ??1?$unique_ptr@VRAMInfoDelegate@@U?$default_delete@VRAMInfoDelegate@@@std@@@std@@QAE@XZ 00405980 f i protect.obj
+ 0001:000049a0       ??1?$unique_ptr@VMotherboardInfoDelegate@@U?$default_delete@VMotherboardInfoDelegate@@@std@@@std@@QAE@XZ 004059a0 f i protect.obj
+ 0001:000049c0       ??1?$unique_ptr@VCPUInfoDelegate@@U?$default_delete@VCPUInfoDelegate@@@std@@@std@@QAE@XZ 004059c0 f i protect.obj
+ 0001:000049e0       ??1?$vector@VRAMInfo@@V?$allocator@VRAMInfo@@@std@@@std@@QAE@XZ 004059e0 f i protect.obj
+ 0001:000049f0       ??1?$vector@VOSInfo@@V?$allocator@VOSInfo@@@std@@@std@@QAE@XZ 004059f0 f i protect.obj
+ 0001:00004a00       ??1?$vector@VMotherboardInfo@@V?$allocator@VMotherboardInfo@@@std@@@std@@QAE@XZ 00405a00 f i protect.obj
+ 0001:00004a10       ??1?$vector@VGPUInfo@@V?$allocator@VGPUInfo@@@std@@@std@@QAE@XZ 00405a10 f i protect.obj
+ 0001:00004a20       ??1?$vector@VCPUInfo@@V?$allocator@VCPUInfo@@@std@@@std@@QAE@XZ 00405a20 f i protect.obj
+ 0001:00004a30       ?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z 00405a30 f i protect.obj
+ 0001:00004a70       ?_Myptr@?$_String_val@U?$_Simple_types@D@std@@@std@@QAEPADXZ 00405a70 f i protect.obj
+ 0001:00004a70       ?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ 00405a70 f i protect.obj
+ 0001:00004a80       ?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z 00405a80 f i protect.obj
+ 0001:00004b70       ??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z 00405b70 f i protect.obj
+ 0001:00004bb0       ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ 00405bb0 f i protect.obj
+ 0001:00004bf0       ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@$$QAV01@@Z 00405bf0 f i protect.obj
+ 0001:00004c70       ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z 00405c70 f i protect.obj
+ 0001:00004cd0       _Curl_free_idnconverted_hostname 00405cd0 f i libcurl:url.obj
+ 0001:00004cd0       @_guard_check_icall_nop@4  00405cd0 f i MSVCRT:guard_support.obj
+ 0001:00004cd0       __initialize_denormal_control 00405cd0 f i MSVCRT:denormal_control.obj
+ 0001:00004cd0       ??1?$_String_alloc@U?$_String_base_types@DV?$allocator@D@std@@@std@@@std@@QAE@XZ 00405cd0 f i protect.obj
+ 0001:00004cd0       __initialize_invalid_parameter_handler 00405cd0 f i MSVCRT:invalid_parameter_handler.obj
+ 0001:00004cd0       ??3@YAXPAX0@Z              00405cd0 f i systeminfo.obj
+ 0001:00004ce0       ?_Tidy@?$vector@VRAMInfo@@V?$allocator@VRAMInfo@@@std@@@std@@IAEXXZ 00405ce0 f i protect.obj
+ 0001:00004d40       ?_Tidy@?$vector@VOSInfo@@V?$allocator@VOSInfo@@@std@@@std@@IAEXXZ 00405d40 f i protect.obj
+ 0001:00004da0       ?_Tidy@?$vector@VMotherboardInfo@@V?$allocator@VMotherboardInfo@@@std@@@std@@IAEXXZ 00405da0 f i protect.obj
+ 0001:00004e00       ?_Tidy@?$vector@VGPUInfo@@V?$allocator@VGPUInfo@@@std@@@std@@IAEXXZ 00405e00 f i protect.obj
+ 0001:00004e60       ?_Tidy@?$vector@VCPUInfo@@V?$allocator@VCPUInfo@@@std@@@std@@IAEXXZ 00405e60 f i protect.obj
+ 0001:00004ec0       ??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@XZ 00405ec0 f i protect.obj
+ 0001:00004f30       ?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE_NI_N@Z 00405f30 f i protect.obj
+ 0001:00004fe0       ?_Eos@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXI@Z 00405fe0 f i protect.obj
+ 0001:00005010       ?_Traits_compare@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@SAHQBDI0I@Z 00406010 f i protect.obj
+ 0001:000050a0       ?erase@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@II@Z 004060a0 f i protect.obj
+ 0001:00005140       ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z 00406140 f i protect.obj
+ 0001:00005240       ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z 00406240 f i protect.obj
+ 0001:00005360       ?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z 00406360 f i protect.obj
+ 0001:00005480       ?_Assign_rv@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEX$$QAV12@@Z 00406480 f i protect.obj
+ 0001:000054f0       ?deallocate@?$_Wrap_alloc@V?$allocator@VRAMInfo@@@std@@@std@@QAEXPAVRAMInfo@@I@Z 004064f0 f i protect.obj
+ 0001:00005560       ?deallocate@?$_Wrap_alloc@V?$allocator@VOSInfo@@@std@@@std@@QAEXPAVOSInfo@@I@Z 00406560 f i protect.obj
+ 0001:000055d0       ?deallocate@?$_Wrap_alloc@V?$allocator@VMotherboardInfo@@@std@@@std@@QAEXPAVMotherboardInfo@@I@Z 004065d0 f i protect.obj
+ 0001:00005630       ?deallocate@?$_Wrap_alloc@V?$allocator@VGPUInfo@@@std@@@std@@QAEXPAVGPUInfo@@I@Z 00406630 f i protect.obj
+ 0001:000056a0       ?deallocate@?$_Wrap_alloc@V?$allocator@VCPUInfo@@@std@@@std@@QAEXPAVCPUInfo@@I@Z 004066a0 f i protect.obj
+ 0001:00005710       ??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@XZ 00406710 f i protect.obj
+ 0001:00005710       ??1_Sentry_base@?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@XZ 00406710 f i systeminfo.obj
+ 0001:00005760       ?deallocate@?$_Wrap_alloc@V?$allocator@D@std@@@std@@QAEXPADI@Z 00406760 f i protect.obj
+ 0001:00005760       ?deallocate@?$allocator@D@std@@QAEXPADI@Z 00406760 f i protect.obj
+ 0001:000057b0       ?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z 004067b0 f i protect.obj
+ 0001:00005940       ?allocate@?$allocator@D@std@@QAEPADI@Z 00406940 f i protect.obj
+ 0001:00005940       ?allocate@?$_Wrap_alloc@V?$allocator@D@std@@@std@@QAEPADI@Z 00406940 f i protect.obj
+ 0001:00005990       ??$_Integral_to_string@DH@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@H@Z 00406990 f i protect.obj
+ 0001:00005a50       ??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z 00406a50 f i protect.obj
+ 0001:00005c90       ??$endl@DU?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@@Z 00406c90 f i protect.obj
+ 0001:00005cc0       ??$make_unique@VCPUInfoDelegate@@$$V@std@@YA?AV?$unique_ptr@VCPUInfoDelegate@@U?$default_delete@VCPUInfoDelegate@@@std@@@0@XZ 00406cc0 f i protect.obj
+ 0001:00005d40       ??$make_unique@VMotherboardInfoDelegate@@$$V@std@@YA?AV?$unique_ptr@VMotherboardInfoDelegate@@U?$default_delete@VMotherboardInfoDelegate@@@std@@@0@XZ 00406d40 f i protect.obj
+ 0001:00005dc0       ??$make_unique@VRAMInfoDelegate@@$$V@std@@YA?AV?$unique_ptr@VRAMInfoDelegate@@U?$default_delete@VRAMInfoDelegate@@@std@@@0@XZ 00406dc0 f i protect.obj
+ 0001:00005e40       ??$make_unique@VGPUInfoDelegate@@$$V@std@@YA?AV?$unique_ptr@VGPUInfoDelegate@@U?$default_delete@VGPUInfoDelegate@@@std@@@0@XZ 00406e40 f i protect.obj
+ 0001:00005ec0       ??$make_unique@VOSInfoDelegate@@$$V@std@@YA?AV?$unique_ptr@VOSInfoDelegate@@U?$default_delete@VOSInfoDelegate@@@std@@@0@XZ 00406ec0 f i protect.obj
+ 0001:00005f40       ??$destroy@PAD@?$_Wrap_alloc@V?$allocator@D@std@@@std@@QAEXPAPAD@Z 00406f40 f i protect.obj
+ 0001:00005f50       ??$_Destroy_range@V?$allocator@VRAMInfo@@@std@@PAVRAMInfo@@@std@@YAXPAVRAMInfo@@0AAU?$_Wrap_alloc@V?$allocator@VRAMInfo@@@std@@@0@@Z 00406f50 f i protect.obj
+ 0001:00005f80       ??$_Destroy_range@V?$allocator@VOSInfo@@@std@@PAVOSInfo@@@std@@YAXPAVOSInfo@@0AAU?$_Wrap_alloc@V?$allocator@VOSInfo@@@std@@@0@@Z 00406f80 f i protect.obj
+ 0001:00005fb0       ??$_Destroy_range@V?$allocator@VMotherboardInfo@@@std@@PAVMotherboardInfo@@@std@@YAXPAVMotherboardInfo@@0AAU?$_Wrap_alloc@V?$allocator@VMotherboardInfo@@@std@@@0@@Z 00406fb0 f i protect.obj
+ 0001:00005fe0       ??$_Destroy_range@V?$allocator@VGPUInfo@@@std@@PAVGPUInfo@@@std@@YAXPAVGPUInfo@@0AAU?$_Wrap_alloc@V?$allocator@VGPUInfo@@@std@@@0@@Z 00406fe0 f i protect.obj
+ 0001:00006010       ??$_Destroy_range@V?$allocator@VCPUInfo@@@std@@PAVCPUInfo@@@std@@YAXPAVCPUInfo@@0AAU?$_Wrap_alloc@V?$allocator@VCPUInfo@@@std@@@0@@Z 00407010 f i protect.obj
+ 0001:00006040       ??0?$_Wrap_alloc@V?$allocator@D@std@@@std@@QAE@XZ 00407040 f i protect.obj
+ 0001:00006050       ??1RAMInfo@@QAE@XZ         00407050 f i protect.obj
+ 0001:000061d0       ??1OSInfo@@QAE@XZ          004071d0 f i protect.obj
+ 0001:00006470       ??1MotherboardInfo@@QAE@XZ 00407470 f i protect.obj
+ 0001:00006560       ??1GPUInfo@@QAE@XZ         00407560 f i protect.obj
+ 0001:00006740       ??1CPUInfo@@QAE@XZ         00407740 f i protect.obj
+ 0001:00006860       ??0exception@std@@QAE@ABV01@@Z 00407860 f i systeminfo.obj
+ 0001:00006890       ?what@exception@std@@UBEPBDXZ 00407890 f i systeminfo.obj
+ 0001:000068a0       ??_Ebad_cast@std@@UAEPAXI@Z 004078a0 f i * CIL library *:* CIL module *
+ 0001:000068a0       ??_Gbad_cast@std@@UAEPAXI@Z 004078a0 f i systeminfo.obj
+ 0001:000068a0       ??_Gexception@std@@UAEPAXI@Z 004078a0 f i systeminfo.obj
+ 0001:000068a0       ??_Eexception@std@@UAEPAXI@Z 004078a0 f i * CIL library *:* CIL module *
+ 0001:000068e0       ??1bad_cast@std@@UAE@XZ    004078e0 f i systeminfo.obj
+ 0001:00006900       ??1locale@std@@QAE@XZ      00407900 f i systeminfo.obj
+ 0001:00006950       ?stoll@std@@YA_JABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@PAIH@Z 00407950 f i systeminfo.obj
  0001:000069e0       ??0CPUInfo@@QAE@ABV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@H@Z 004079e0 f   systeminfo.obj
  0001:00007380       ?name@GPUInfo@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ 00408380 f   systeminfo.obj
  0001:00007380       ?name@CPUInfo@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ 00408380 f   systeminfo.obj
@@ -3082,13 +3082,13 @@
  0001:00001340       ??__E?RAM_INSTANCE_QUERY_STRING@RAMInfoDelegate@@0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@B@@YAXXZ 00402340 f   systeminfo.obj
  0001:00001380       ??__E?RAM_INFO_END_IDENTIFIER_STRING@RAMInfoDelegate@@0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@B@@YAXXZ 00402380 f   systeminfo.obj
  0001:000013bd       ??__E_Fac_tidy_reg@std@@YAXXZ 004023bd f   msvcprt:locale0_implib.obj
- 0001:00004ce0       _error_close_writer        00405ce0 f i libcurl:content_encoding.obj
- 0001:00004ce0       _client_close_writer       00405ce0 f i libcurl:content_encoding.obj
- 0001:00004ce0       _identity_close_writer     00405ce0 f i libcurl:content_encoding.obj
- 0001:00004ce0       _trhash_dtor               00405ce0 f i libcurl:multi.obj
- 0001:0000586f       __catch$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z$0 0040686f f i protect.obj
- 0001:00005910       __catch$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z$1 00406910 f i protect.obj
- 0001:00005c15       __catch$??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z$0 00406c15 f i protect.obj
+ 0001:00004cd0       _error_close_writer        00405cd0 f i libcurl:content_encoding.obj
+ 0001:00004cd0       _client_close_writer       00405cd0 f i libcurl:content_encoding.obj
+ 0001:00004cd0       _identity_close_writer     00405cd0 f i libcurl:content_encoding.obj
+ 0001:00004cd0       _trhash_dtor               00405cd0 f i libcurl:multi.obj
+ 0001:0000585f       __catch$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z$0 0040685f f i protect.obj
+ 0001:00005900       __catch$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z$1 00406900 f i protect.obj
+ 0001:00005c05       __catch$??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z$0 00406c05 f i protect.obj
  0001:00007707       __catch$?getArchitecture@CPUInfo@@ABE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV23@@Z$0 00408707 f   systeminfo.obj
  0001:000082de       __catch$??0GPUInfo@@QAE@ABV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@H@Z$0 004092de f   systeminfo.obj
  0001:00008c07       __catch$?getVideoArchitecture@GPUInfo@@ABE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z$0 00409c07 f   systeminfo.obj

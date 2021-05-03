@@ -282,7 +282,7 @@ bool IsValidTime(int year, int month, int day)
 
 	std::cout << 1900 + time->tm_year << "." << time->tm_mon + 1 << "." << time->tm_mday << " " << time->tm_hour << ":" << time->tm_min << ":" << time->tm_sec << std::endl;
 
-	if (year >= times.wYear && month >= times.wMonth && day >= times.wDay)
+	if (times.wYear >= year && times.wMonth >= month && times.wDay >= day)
 		return false;
 
 	return true;
