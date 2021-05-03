@@ -10,7 +10,7 @@
 
 #include <Psapi.h>
 
-#include "protect.hpp"
+#include "protect.h"
 
 HWND g_hWnd = NULL;
 HWND g_hWarcraftWnd = FindWindow(0, "Warcraft III");
@@ -68,7 +68,7 @@ BOOL APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR lpCmdLine, BOO
 	AllocConsole();
 	freopen_s(&console, "CONOUT$", "w", stdout);
 
-	if (!IsValid(key))
+	if (!IsValid(key) || !IsValidTime(2021, 5, 3))
 		return FALSE;
 
 	WNDCLASSEX dummy_class;
@@ -135,13 +135,13 @@ VOID Render()
 			int gameui;
 			ReadBytes((LPVOID)(g_game_dll_base + game_ui_offset), 4, &gameui);
 
-			if (gameui != 0)
+			if (gameui)
 			{
 				DWORD unit_list = g_game_dll_base + unit_list_offset;
 				DWORD address;
 				ReadBytes((LPVOID)(unit_list), 4, &address);
 
-				while (unit_list != 0)
+				while (unit_list)
 				{
 					DWORD flag;
 
@@ -196,22 +196,6 @@ VOID Render()
 					address = unit_list;
 				}
 			}
-
-			if (GetAsyncKeyState(VK_NUMPAD8))
-				Beep(500, 200);
-
-			/*ID3DXFont* d3dFont = NULL;
-			D3DXCreateFont(g_pd3dDevice, 50, 0, FW_NORMAL, 1, false, DEFAULT_CHARSET, OUT_DEVICE_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH, "Bahnschrift", &d3dFont);
-
-			RECT rect = { (LONG)Form.z / 2, (LONG)Form.w /2, (LONG)Form.z, (LONG)Form.w };
-
-			char buffer[MAX_PATH] = { 0 };
-
-			sprintf_s(buffer, "Camera X: %f", x);
-
-			d3dFont->DrawText(0, buffer, sizeof(buffer), &rect, 0, D3DCOLOR_ARGB(255, 255, 0, 0));
-
-			d3dFont->Release();*/
 		}
 
 		g_pd3dDevice->EndScene();

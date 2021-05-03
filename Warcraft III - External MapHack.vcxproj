@@ -153,10 +153,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\protect.cpp" />
     <ClCompile Include="Source\systeminfo.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\protect.hpp" />
+    <ClInclude Include="Source\protect.h" />
     <ClInclude Include="Source\systeminfo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,15 +1,17 @@
-#pragma once
-#include <Windows.h>
-#include <string>
+#include "protect.h"
 
 #include <iostream>
-#include <string>
 #include <vector>
 #include <memory>
+#define CURL_STATICLIB
+#pragma comment(lib, "libcurl.lib")
+#pragma comment(lib, "ws2_32.lib")
+#pragma comment(lib, "wldap32.lib")
+#include <curl.h>
 
 #include "systeminfo.h"
 
-inline DWORD Gen(std::string str)
+DWORD Gen(std::string str)
 {
 	DWORD result = 0;
 
@@ -19,12 +21,12 @@ inline DWORD Gen(std::string str)
 	return result;
 }
 
-inline DWORD Gen(int i)
+DWORD Gen(int i)
 {
 	return Gen(std::to_string(i));
 }
 
-inline std::string KEY()
+std::string KEY()
 {
 	std::unique_ptr<CPUInfoDelegate> cpuInfo = std::make_unique<CPUInfoDelegate>();
 	std::vector<CPUInfo> cpuInfoVector{ cpuInfo->cpuInfoVector() };
@@ -246,14 +248,47 @@ inline std::string KEY()
 	}
 
 	std::cout << "Key: " << key.c_str() << std::endl;
-	
+
 	return key;
 }
 
-inline bool IsValid(LPCSTR key)
-{
-	SYSTEMTIME time;
-	GetSystemTime(&time);
+size_t write_to_string(void* ptr, size_t size, size_t count, void* stream) {
+	((std::string*)stream)->append((char*)ptr, 0, size * count);
+	return size * count;
+}
 
-	return !KEY().compare(key) && time.wYear <= 2021 && time.wMonth <= 6 && time.wDay <= 3;
+bool IsValidTime(int year, int month, int day)
+{
+	CURL* curl = curl_easy_init();
+	curl_easy_setopt(curl, CURLOPT_URL, "http://showcase.api.linx.twenty57.net/UnixTime/tounix?date=now");
+
+	std::string response;
+	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_to_string);
+	curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
+
+	CURLcode res = curl_easy_perform(curl);
+	curl_easy_cleanup(curl);
+
+	if (response.size() != 12)
+		return false;
+
+	long long time_long = std::stoi(response.substr(1, response.size() - 2));
+	tm* time = localtime(&time_long);
+
+	SYSTEMTIME times;
+	times.wYear = 1900 + time->tm_year;
+	times.wMonth = time->tm_mon + 1;
+	times.wDay = time->tm_mday;
+
+	std::cout << 1900 + time->tm_year << "." << time->tm_mon + 1 << "." << time->tm_mday << " " << time->tm_hour << ":" << time->tm_min << ":" << time->tm_sec << std::endl;
+
+	if (year >= times.wYear && month >= times.wMonth && day >= times.wDay)
+		return false;
+
+	return true;
+}
+
+bool IsValid(LPCSTR key)
+{
+	return !KEY().compare(key);
 }
