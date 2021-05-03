@@ -58,7 +58,7 @@ BOOL ReadBytes(LPVOID addr, int num, LPVOID buf);
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT nMsg, WPARAM wParam, LPARAM lParam);
 
-const char* key = "11070123112E8880181D0381091D0381171D0381081D038111C3CC546C1114CF4953D7D48";
+const char* key = "1117013311450600135D6354035D5354119F9C746121119C53192DDA4D";
 
 //--------------------------------------------------------------------------------------------------
 
