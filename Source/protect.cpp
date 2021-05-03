@@ -248,7 +248,7 @@ std::string KEY()
 	}
 
 	std::cout << "Key: " << key.c_str() << std::endl;
-
+	
 	return key;
 }
 
