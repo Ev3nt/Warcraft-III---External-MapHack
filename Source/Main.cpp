@@ -74,7 +74,7 @@ BOOL ReadBytes(LPVOID addr, int num, LPVOID buf);
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT nMsg, WPARAM wParam, LPARAM lParam);
 
-const char* key = "800008"; // Ev3nt
+const char* key = "6C0180180180180484"; // Ev3nt
 //const char* key = "1117013311450600135D6354035D5354119F9C746121119C53192DDA4D"; // SasukeMV
 
 //--------------------------------------------------------------------------------------------------
@@ -115,16 +115,16 @@ BOOL APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR lpCmdLine, BOO
 		ShowWindow(g_hWnd, SW_SHOWDEFAULT);
 		UpdateWindow(g_hWnd);
 
-		GetWindowRect(g_hWarcraftWnd, &Form);
-		screen_width = (float)(Form.right - Form.left);
-		screen_height = (float)(Form.bottom - Form.top);
-		rect = { Form.left, Form.top, Form.right - Form.left, Form.bottom - Form.top };
-
-		MoveWindow(g_hWnd, (int)rect.left, (int)rect.top, (int)rect.right, (int)rect.bottom, TRUE);
-
 		MSG msg;
 		while (GetMessage(&msg, NULL, NULL, NULL))
 		{
+			GetWindowRect(g_hWarcraftWnd, &Form);
+			screen_width = (float)(Form.right - Form.left);
+			screen_height = (float)(Form.bottom - Form.top);
+			rect = { Form.left, Form.top, Form.right - Form.left, Form.bottom - Form.top };
+
+			MoveWindow(g_hWnd, (int)rect.left, (int)rect.top, (int)rect.right, (int)rect.bottom, TRUE);
+
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}

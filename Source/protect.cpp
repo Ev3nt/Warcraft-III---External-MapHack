@@ -16,7 +16,7 @@ DWORD Gen(std::string str)
 	DWORD result = 0;
 
 	for (size_t i = 0; i < str.size(); i++)
-		result += str[i] % 2;
+		result += str[i];
 
 	return result;
 }
@@ -35,7 +35,7 @@ std::string KEY()
 	std::string key = "";
 
 	char BUFFER[MAX_PATH];
-	//-------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------
 
 	/*for (std::vector<CPUInfo>::const_iterator iter = cpuInfoVector.begin(); iter != cpuInfoVector.end(); iter++) {
 		ZeroMemory(BUFFER, sizeof(BUFFER));
