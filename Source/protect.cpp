@@ -198,9 +198,11 @@ std::string KEY()
 		sprintf(BUFFER, "%01X", Gen(iter->osNumber() + 1));
 		key += BUFFER;
 
+		// Если ключ изменился за этот день, закомментируйте эту хрень, что снизу.
 		ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->name()));
 		key += BUFFER;
+		// Вот до сюда.
 
 		ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->manufacturer()));

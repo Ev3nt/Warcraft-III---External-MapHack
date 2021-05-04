@@ -34,7 +34,10 @@ enum offsets {
 	unit_between_offset = 0x310,
 	unit_table_limit_offset = 0x31FEF,
 	unit_flag_is_unit = 0xB8,
+	unit_portret_color = 0x28,
+	unit_player_owner = 0x5c,
 	unit_position_offset = 0x288,
+	unit_id = 0x34,
 
 	game_ui_offset = 0xACE66C,
 
@@ -42,6 +45,19 @@ enum offsets {
 	
 	game_matrix_p = 0x850		// 890, 8A0, 8B0
 };
+
+DWORD colors[12] = {0xFFFF0303,
+					0xFF0042FF,
+					0xFF1CE6B9,
+					0xFF540081,
+					0xFFFFFC01,
+					0xFFfEBA0E,
+					0xFF20C000,
+					0xFFE55BB0,
+					0xFF959697,
+					0xFF7EBFF1,
+					0xFF106246,
+					0xFF4E2A04};
 
 BOOL D3DInit(HWND hWnd);
 VOID Render();
@@ -58,7 +74,7 @@ BOOL ReadBytes(LPVOID addr, int num, LPVOID buf);
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT nMsg, WPARAM wParam, LPARAM lParam);
 
-const char* key = "11070123112E8880181D0381091D0381171D0381081D038111C3CC546C1114CF4953D7D48"; // Ev3nt
+const char* key = "11070123112E8880181D0381091D0381171D0381081D038111C3CC546C1122CF4953D7D48"; // Ev3nt
 //const char* key = "1117013311450600135D6354035D5354119F9C746121119C53192DDA4D"; // SasukeMV
 
 //--------------------------------------------------------------------------------------------------
@@ -69,7 +85,7 @@ BOOL APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR lpCmdLine, BOO
 	AllocConsole();
 	freopen_s(&console, "CONOUT$", "w", stdout);
 
-	if (!IsValid(key) || !IsValidTime(2021, 5, 4))
+	if (!IsValid(key) || !IsValidTime(2021, 5, 5))
 		return FALSE;
 
 	WNDCLASSEX dummy_class;
@@ -138,6 +154,9 @@ VOID Render()
 
 			if (gameui)
 			{
+				ID3DXFont* d3dFont = 0;
+				D3DXCreateFont(g_pd3dDevice, 25, 0, FW_NORMAL, 1, false, DEFAULT_CHARSET, OUT_DEVICE_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH, "Bahnschrift", &d3dFont);
+
 				DWORD unit_list = g_game_dll_base + unit_list_offset;
 				DWORD address;
 				ReadBytes((LPVOID)(unit_list), 4, &address);
@@ -149,46 +168,64 @@ VOID Render()
 					for (; ; address += unit_between_offset)
 						if (ReadBytes((LPVOID)(address + unit_flag_is_unit), 4, &flag))
 						{
-							if (flag)
+							if (!flag)
+								continue;
+
+							BYTE player;
+							BYTE id[5];
+							D3DXVECTOR3 position;
+							D3DXVECTOR3 screen_position;
+							ReadBytes((LPVOID)(address + unit_player_owner), 1, &player);
+							ZeroMemory(id, 5);
+							ReadBytes((LPVOID)(address + unit_id), 4, &id);
+							BYTE temp = id[0];
+							id[0] = id[3];
+							id[3] = temp;
+							temp = id[1];
+							id[1] = id[2];
+							id[2] = temp;
+							ReadBytes((LPVOID)(address + unit_position_offset), 12, &position);
+							position = { position.x, position.y, position.z };
+
+							ReadBytes((LPVOID)(g_game_dll_base + game_matrix_offset), 4, &view_matrix_temp.m);
+							ReadBytes((LPVOID)(*(DWORD*)&view_matrix_temp.m + game_matrix_p), 64, &view_matrix_temp.m);
+
+							view_matrix = view_matrix_temp;
+							view_matrix[0] = view_matrix_temp[0];
+							view_matrix[0] = view_matrix_temp[0];
+							view_matrix[1] = view_matrix_temp[4];
+							view_matrix[2] = view_matrix_temp[8];
+							view_matrix[3] = view_matrix_temp[12];
+							view_matrix[4] = view_matrix_temp[1];
+							view_matrix[5] = view_matrix_temp[5];
+							view_matrix[6] = view_matrix_temp[9];
+							view_matrix[7] = view_matrix_temp[13];
+							view_matrix[8] = view_matrix_temp[2];
+							view_matrix[9] = view_matrix_temp[6];
+							view_matrix[10] = view_matrix_temp[10];
+							view_matrix[11] = view_matrix_temp[14];
+							view_matrix[12] = view_matrix_temp[3];
+							view_matrix[13] = view_matrix_temp[7];
+							view_matrix[14] = view_matrix_temp[11];
+							view_matrix[15] = view_matrix[15];
+
+							screen_position = WorldToScreen(position);
+
+							if (screen_position.z >= 0.01f)
 							{
-								D3DXVECTOR3 position;
-								D3DXVECTOR3 screen_position;
-								ReadBytes((LPVOID)(address + unit_position_offset), 12, &position);
-								position = { position.x, position.y, position.z };
+								DWORD color = colors[player];
 
-								ReadBytes((LPVOID)(g_game_dll_base + game_matrix_offset), 4, &view_matrix_temp.m);
-								ReadBytes((LPVOID)(*(DWORD*)&view_matrix_temp.m + game_matrix_p), 64, &view_matrix_temp.m);
+								D3DXVECTOR2 top = { screen_position.x, screen_position.y - 80 };
+								D3DXVECTOR2 bot = { screen_position.x, screen_position.y };
 
-								view_matrix = view_matrix_temp;
-								view_matrix[0] = view_matrix_temp[0];
-								view_matrix[0] = view_matrix_temp[0];
-								view_matrix[1] = view_matrix_temp[4];
-								view_matrix[2] = view_matrix_temp[8];
-								view_matrix[3] = view_matrix_temp[12];
-								view_matrix[4] = view_matrix_temp[1];
-								view_matrix[5] = view_matrix_temp[5];
-								view_matrix[6] = view_matrix_temp[9];
-								view_matrix[7] = view_matrix_temp[13];
-								view_matrix[8] = view_matrix_temp[2];
-								view_matrix[9] = view_matrix_temp[6];
-								view_matrix[10] = view_matrix_temp[10];
-								view_matrix[11] = view_matrix_temp[14];
-								view_matrix[12] = view_matrix_temp[3];
-								view_matrix[13] = view_matrix_temp[7];
-								view_matrix[14] = view_matrix_temp[11];
-								view_matrix[15] = view_matrix[15];
+								RECT rect = { bot.x - 20, bot.y, bot.x + 80, bot.y + 100 };
+								d3dFont->DrawText(0, (LPCSTR)id, sizeof(id), &rect, 0, color);
+								
 
-								screen_position = WorldToScreen(position);
-
-								if (screen_position.z >= 0.01f)
-								{
-									D3DXVECTOR2 top = { screen_position.x, screen_position.y };
-									D3DXVECTOR2 bot = { screen_position.x, screen_position.y - 80 };
-
-									//DrawLine(screen_width / 2, (float)(Form.bottom - Form.top), screen_position.x, screen_position.y, 5, 0XFF00FF00);
-									DrawEspBox(top, bot, 5, 0xFFFF0000);
-								}
+								//DrawLine(screen_width / 2, (float)(Form.bottom - Form.top), screen_position.x, screen_position.y, 5, 0XFF00FF00);
+								DrawEspBox(top, bot, 5, color);
 							}
+							
 						}
 						else
 							break;
@@ -196,9 +233,10 @@ VOID Render()
 					ReadBytes((LPVOID)(unit_list), 4, &unit_list);
 					address = unit_list;
 				}
+
+				d3dFont->Release();
 			}
 		}
-
 		g_pd3dDevice->EndScene();
 	}
 
