@@ -1,7 +1,9 @@
 #include <Windows.h>
 #include <iostream>
+#include <fstream>
 #include <math.h>
 #include <ostream>
+#include <map>
 
 #include <d3d9.h>
 #include <d3dx9.h>
@@ -59,6 +61,8 @@ DWORD colors[12] = {0xFFFF0303,
 					0xFF106246,
 					0xFF4E2A04};
 
+std::map<UINT, LPCSTR> UnitNames;
+
 BOOL D3DInit(HWND hWnd);
 VOID Render();
 
@@ -74,8 +78,14 @@ BOOL ReadBytes(LPVOID addr, int num, LPVOID buf);
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT nMsg, WPARAM wParam, LPARAM lParam);
 
-const char* key = "32E1C41C54E1"; // Ev3nt
+const char* key = "6C0180180180180484"; // Ev3nt
 //const char* key = "32E1C41C54E1"; // SasukeMV
+
+//--------------------------------------------------------------------------------------------------
+
+UINT to_ID(LPCSTR lpID);
+LPSTR trim(LPSTR s);
+void ReadNames();
 
 //--------------------------------------------------------------------------------------------------
 
@@ -112,6 +122,8 @@ BOOL APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR lpCmdLine, BOO
 
 	if (D3DInit(g_hWnd) && (g_hProcess = GetProcessHandle()))
 	{
+		ReadNames();
+
 		ShowWindow(g_hWnd, SW_SHOWDEFAULT);
 		UpdateWindow(g_hWnd);
 
@@ -222,8 +234,12 @@ VOID Render()
 						D3DXVECTOR2 top = { screen_position.x, screen_position.y - 80 };
 						D3DXVECTOR2 bot = { screen_position.x, screen_position.y };
 
-						RECT rect = { (LONG)bot.x - 20, (LONG)bot.y, (LONG)bot.x + 80, (LONG)bot.y + 100 };
-						d3dFont->DrawText(0, (LPCSTR)id, sizeof(id), &rect, 0, color);
+						RECT rect = { (LONG)bot.x - 25, (LONG)bot.y, (LONG)bot.x + 80, (LONG)bot.y + 100 };
+
+						if (UnitNames.find(to_ID((LPCSTR)id)) != UnitNames.end())
+							d3dFont->DrawText(0, UnitNames[to_ID((LPCSTR)id)], strlen(UnitNames[to_ID((LPCSTR)id)]), &rect, 0, color);
+						else
+							d3dFont->DrawText(0, (LPCSTR)id, sizeof(id), &rect, 0, color);
 						
 
 						//DrawLine(screen_width / 2, (float)(Form.bottom - Form.top), screen_position.x, screen_position.y, 5, 0XFF00FF00);
@@ -391,4 +407,58 @@ HANDLE GetProcessHandle()
 		}
 
 	return handle;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+UINT to_ID(LPCSTR lpID)
+{
+	return lpID[0] * 256 * 256 * 256 + lpID[1] * 256 * 256 + lpID[2] * 256 + lpID[3];
+}
+
+LPSTR trim(LPSTR s)
+{
+	char* end = s + strlen(s) - 1;
+	while (*s && isspace(*s))
+		*s++ = 0;
+	while (isspace(*end))
+		*end-- = 0;
+	return s;
+}
+
+void ReadNames()
+{
+	std::ifstream file("UnitNames.txt");
+
+	if (!file)
+		return;
+
+	while (!file.eof())
+	{
+		char buffer[MAX_PATH];
+		ZeroMemory(buffer, sizeof(buffer));
+		file.getline(buffer, sizeof(buffer));
+
+		UINT i = 0;
+		for (; i < strlen(buffer) && buffer[i] != '='; i++)
+		{ }
+
+		if (!i)
+			continue;
+
+		UINT key_lenght = i + 1;
+		UINT value_lenght = strlen(buffer) - i + 1;
+		char* key = new char[key_lenght];
+		char* value = new char[value_lenght];
+		ZeroMemory(key, key_lenght);
+		ZeroMemory(key, value_lenght);
+		strncpy(key, buffer, key_lenght - 1);
+		strncpy(value, &buffer[i + 1], value_lenght - 1);
+
+		UnitNames[to_ID(trim(key))] = trim(value);
+
+		delete[] key;
+	}
+
+	file.close();
 }
