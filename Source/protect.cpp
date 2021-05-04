@@ -35,7 +35,7 @@ std::string KEY()
 	std::string key = "";
 
 	char BUFFER[MAX_PATH];
-	//------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------
 
 	/*for (std::vector<CPUInfo>::const_iterator iter = cpuInfoVector.begin(); iter != cpuInfoVector.end(); iter++) {
 		ZeroMemory(BUFFER, sizeof(BUFFER));
