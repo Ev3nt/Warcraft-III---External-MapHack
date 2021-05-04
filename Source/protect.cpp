@@ -37,7 +37,7 @@ std::string KEY()
 	char BUFFER[MAX_PATH];
 	//------------------------------------------------------------------------------------------
 
-	for (std::vector<CPUInfo>::const_iterator iter = cpuInfoVector.begin(); iter != cpuInfoVector.end(); iter++) {
+	/*for (std::vector<CPUInfo>::const_iterator iter = cpuInfoVector.begin(); iter != cpuInfoVector.end(); iter++) {
 		ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->cpuNumber() + 1));
 		key += BUFFER;
@@ -65,17 +65,17 @@ std::string KEY()
 		ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->L3CacheSize()));
 		key += BUFFER;
-	}
+	}*/
 
 	std::unique_ptr<MotherboardInfoDelegate> moboInfo = std::make_unique<MotherboardInfoDelegate>();
 	std::vector<MotherboardInfo> moboInfoVector = moboInfo->motherboardInfoVector();
 
-	ZeroMemory(BUFFER, sizeof(BUFFER));
+	/*ZeroMemory(BUFFER, sizeof(BUFFER));
 	sprintf(BUFFER, "%01X", Gen(moboInfo->numberOfMotherboardInfoItems()));
-	key += BUFFER;
+	key += BUFFER;*/
 
 	for (std::vector<MotherboardInfo>::const_iterator iter = moboInfoVector.begin(); iter != moboInfoVector.end(); iter++) {
-		ZeroMemory(BUFFER, sizeof(BUFFER));
+		/*ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->motherboardNumber() + 1));
 		key += BUFFER;
 
@@ -89,26 +89,26 @@ std::string KEY()
 
 		ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->chipset()));
-		key += BUFFER;
+		key += BUFFER;*/
 
 		ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->serialNumber()));
 		key += BUFFER;
 
-		ZeroMemory(BUFFER, sizeof(BUFFER));
+		/*ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->version()));
-		key += BUFFER;
+		key += BUFFER;*/
 	}
 
 	std::unique_ptr<RAMInfoDelegate> ramInfo = std::make_unique<RAMInfoDelegate>();
 	std::vector<RAMInfo> ramInfoVector = ramInfo->ramInfoVector();
 
-	ZeroMemory(BUFFER, sizeof(BUFFER));
+	/*ZeroMemory(BUFFER, sizeof(BUFFER));
 	sprintf(BUFFER, "%01X", Gen(ramInfo->numberOfRAMInfoItems()));
-	key += BUFFER;
+	key += BUFFER;*/
 
 	for (std::vector<RAMInfo>::const_iterator iter = ramInfoVector.begin(); iter != ramInfoVector.end(); iter++) {
-		ZeroMemory(BUFFER, sizeof(BUFFER));
+		/*ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->ramNumber() + 1));
 		key += BUFFER;
 
@@ -122,13 +122,13 @@ std::string KEY()
 
 		ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->capacity()));
-		key += BUFFER;
+		key += BUFFER;*/
 
 		ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->serialNumber()));
 		key += BUFFER;
 
-		ZeroMemory(BUFFER, sizeof(BUFFER));
+		/*ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->formFactor()));
 		key += BUFFER;
 
@@ -138,17 +138,17 @@ std::string KEY()
 
 		ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->memoryType()));
-		key += BUFFER;
+		key += BUFFER;*/
 	}
 
 	std::unique_ptr<GPUInfoDelegate> gpuInfo = std::make_unique<GPUInfoDelegate>();
 	std::vector<GPUInfo> gpuInfoVector = gpuInfo->gpuInfoVector();
 
-	ZeroMemory(BUFFER, sizeof(BUFFER));
+	/*ZeroMemory(BUFFER, sizeof(BUFFER));
 	sprintf(BUFFER, "%01X", Gen(gpuInfo->numberOfGPUInfoItems()));
-	key += BUFFER;
+	key += BUFFER;*/
 
-	for (std::vector<GPUInfo>::const_iterator iter = gpuInfoVector.begin(); iter != gpuInfoVector.end(); iter++) {
+	/*for (std::vector<GPUInfo>::const_iterator iter = gpuInfoVector.begin(); iter != gpuInfoVector.end(); iter++) {
 		ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->gpuNumber() + 1));
 		key += BUFFER;
@@ -184,19 +184,19 @@ std::string KEY()
 		ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->videoProcessor()));
 		key += BUFFER;
-	}
+	}*/
 
 	std::unique_ptr<OSInfoDelegate> osInfo = std::make_unique<OSInfoDelegate>();
 	std::vector<OSInfo> osInfoVector = osInfo->osInfoVector();
 
-	ZeroMemory(BUFFER, sizeof(BUFFER));
+	/*ZeroMemory(BUFFER, sizeof(BUFFER));
 	sprintf(BUFFER, "%01X", Gen(osInfo->numberOfOSInfoItems()));
-	key += BUFFER;
+	key += BUFFER;*/
 
 	for (std::vector<OSInfo>::const_iterator iter = osInfoVector.begin(); iter != osInfoVector.end(); iter++) {
-		ZeroMemory(BUFFER, sizeof(BUFFER));
+		/*ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->osNumber() + 1));
-		key += BUFFER;
+		key += BUFFER;*/
 
 		// Если ключ изменился за этот день, закомментируйте эту хрень, что снизу.
 		/*ZeroMemory(BUFFER, sizeof(BUFFER));
@@ -204,7 +204,7 @@ std::string KEY()
 		key += BUFFER;*/
 		// Вот до сюда.
 
-		ZeroMemory(BUFFER, sizeof(BUFFER));
+		/*ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->manufacturer()));
 		key += BUFFER;
 
@@ -242,7 +242,7 @@ std::string KEY()
 
 		ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->totalSwapSize()));
-		key += BUFFER;
+		key += BUFFER;*/
 
 		ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->serialNumber()));
