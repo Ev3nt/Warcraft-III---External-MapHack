@@ -199,9 +199,9 @@ std::string KEY()
 		key += BUFFER;
 
 		// Если ключ изменился за этот день, закомментируйте эту хрень, что снизу.
-		ZeroMemory(BUFFER, sizeof(BUFFER));
+		/*ZeroMemory(BUFFER, sizeof(BUFFER));
 		sprintf(BUFFER, "%01X", Gen(iter->name()));
-		key += BUFFER;
+		key += BUFFER;*/
 		// Вот до сюда.
 
 		ZeroMemory(BUFFER, sizeof(BUFFER));
