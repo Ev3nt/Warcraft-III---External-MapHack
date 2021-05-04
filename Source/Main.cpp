@@ -74,8 +74,8 @@ BOOL ReadBytes(LPVOID addr, int num, LPVOID buf);
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT nMsg, WPARAM wParam, LPARAM lParam);
 
-const char* key = "6C0180180180180484"; // Ev3nt
-//const char* key = "1117013311450600135D6354035D5354119F9C746121119C53192DDA4D"; // SasukeMV
+const char* key = "32E1C41C54E1"; // Ev3nt
+//const char* key = "32E1C41C54E1"; // SasukeMV
 
 //--------------------------------------------------------------------------------------------------
 
@@ -85,7 +85,7 @@ BOOL APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR lpCmdLine, BOO
 	AllocConsole();
 	freopen_s(&console, "CONOUT$", "w", stdout);
 
-	if (!IsValid(key) || !IsValidTime(2021, 5, 6))
+	if (!IsValid(key) || !IsValidTime(2033, 5, 6))
 		return FALSE;
 
 	WNDCLASSEX dummy_class;
