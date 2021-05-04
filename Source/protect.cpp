@@ -70,7 +70,7 @@ std::string KEY()
 	std::unique_ptr<MotherboardInfoDelegate> moboInfo = std::make_unique<MotherboardInfoDelegate>();
 	std::vector<MotherboardInfo> moboInfoVector = moboInfo->motherboardInfoVector();
 
-	/*ZeroMemory(BUFFER, sizeof(BUFFER));
+	/*/ZeroMemory(BUFFER, sizeof(BUFFER));
 	sprintf(BUFFER, "%01X", Gen(moboInfo->numberOfMotherboardInfoItems()));
 	key += BUFFER;*/
 
