@@ -82,7 +82,7 @@ BOOL ReadBytes(LPVOID addr, int num, LPVOID buf);
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT nMsg, WPARAM wParam, LPARAM lParam);
 
-const char* key = "6C0180180180180484"; // Ev3nt
+const char* key = "32E1C41C54E1"; // Ev3nt
 //const char* key = "32E1C41C54E1"; // SasukeMV
 
 //--------------------------------------------------------------------------------------------------
@@ -233,7 +233,7 @@ VOID Render()
 
 						DWORD color = color_number < 12 ? colors[color_number] : 0xFFFFFFFF;
 
-						DrawMapPoint(position.x / 22 , -position.y, 7, color);
+						DrawMapPoint(position.x / 50, -position.y / 65, 7, color);
 
 						if (screen_position.z < 0.01f)
 							continue;
