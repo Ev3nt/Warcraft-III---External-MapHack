@@ -233,7 +233,7 @@ VOID Render()
 
 						DWORD color = color_number < 12 ? colors[color_number] : 0xFFFFFFFF;
 
-						DrawMapPoint(position.x / 50, -position.y / 65, 5, color);
+						DrawMapPoint(position.x / 48, -position.y / 62, 7, color);
 
 						if (screen_position.z < 0.01f)
 							continue;
