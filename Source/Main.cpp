@@ -242,7 +242,7 @@ VOID Render()
 							d3dFont->DrawText(0, (LPCSTR)id, sizeof(id), &rect, 0, color);
 						
 
-						//DrawLine(screen_width / 2, (float)(Form.bottom - Form.top), screen_position.x, screen_position.y, 5, 0XFF00FF00);
+						//DrawLine(screen_width / 2, (float)(Form.bottom - Form.top), screen_position.x, screen_position.y, 5, color);
 						DrawEspBox(top, bot, 5, color);
 					}
 					else
@@ -443,17 +443,17 @@ void ReadNames()
 		for (; i < strlen(buffer) && buffer[i] != '='; i++)
 		{ }
 
-		if (!i)
+		if (i == strlen(buffer))
 			continue;
 
 		UINT key_lenght = i + 1;
 		UINT value_lenght = strlen(buffer) - i + 1;
 		char* key = new char[key_lenght];
 		char* value = new char[value_lenght];
-		ZeroMemory(key, key_lenght);
-		ZeroMemory(key, value_lenght);
 		strncpy(key, buffer, key_lenght - 1);
 		strncpy(value, &buffer[i + 1], value_lenght - 1);
+		key[key_lenght - 1] = 0;
+		value[value_lenght - 1] = 0;
 
 		UnitNames[to_ID(trim(key))] = trim(value);
 
