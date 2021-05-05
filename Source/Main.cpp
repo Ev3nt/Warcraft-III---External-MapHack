@@ -27,6 +27,8 @@ LPD3DXLINE g_line;
 RECT Form;
 float screen_width;
 float screen_height;
+float mapx;
+float mapy;
 
 D3DXMATRIXA16 view_matrix_temp;
 D3DXMATRIXA16 view_matrix;
@@ -68,6 +70,8 @@ VOID Render();
 
 VOID DrawLine(float x1, float y1, float x2, float y2, float thickness, D3DCOLOR color);
 VOID DrawLine(D3DXVECTOR2 src, D3DXVECTOR2 dst, float thickness, D3DCOLOR color);
+
+VOID DrawMapPoint(float x, float y, float thickness, D3DCOLOR color);
 
 VOID DrawEspBox(D3DXVECTOR2 top, D3DXVECTOR2 bot, float thickness, D3DCOLOR color);
 
@@ -133,6 +137,8 @@ BOOL APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR lpCmdLine, BOO
 			GetWindowRect(g_hWarcraftWnd, &Form);
 			screen_width = (float)(Form.right - Form.left);
 			screen_height = (float)(Form.bottom - Form.top);
+			mapx = screen_width / 10;
+			mapy = screen_height - screen_height / 7.35f;
 			rect = { Form.left, Form.top, Form.right - Form.left, Form.bottom - Form.top };
 
 			MoveWindow(g_hWnd, (int)rect.left, (int)rect.top, (int)rect.right, (int)rect.bottom, TRUE);
@@ -200,7 +206,6 @@ VOID Render()
 						id[1] = id[2];
 						id[2] = temp;
 						ReadBytes((LPVOID)(address + unit_position_offset), 12, &position);
-						position = { position.x, position.y, position.z };
 
 						ReadBytes((LPVOID)(g_game_dll_base + game_matrix_offset), 4, &view_matrix_temp.m);
 						ReadBytes((LPVOID)(*(DWORD*)&view_matrix_temp.m + game_matrix_p), 64, &view_matrix_temp.m);
@@ -226,10 +231,12 @@ VOID Render()
 
 						screen_position = WorldToScreen(position);
 
+						DWORD color = color_number < 12 ? colors[color_number] : 0xFFFFFFFF;
+
+						DrawMapPoint(position.x / 50, -position.y / 65, 5, color);
+
 						if (screen_position.z < 0.01f)
 							continue;
-
-						DWORD color = color_number < 12 ? colors[color_number] : 0xFFFFFFFF;
 
 						D3DXVECTOR2 top = { screen_position.x, screen_position.y - 80 };
 						D3DXVECTOR2 bot = { screen_position.x, screen_position.y };
@@ -277,6 +284,11 @@ VOID DrawLine(float x1, float y1, float x2, float y2, float thickness, D3DCOLOR 
 VOID DrawLine(D3DXVECTOR2 src, D3DXVECTOR2 dst, float thickness, D3DCOLOR color)
 {
 	DrawLine(src.x, src.y, dst.x, dst.y, thickness, color);
+}
+
+VOID DrawMapPoint(float x, float y, float thickness, D3DCOLOR color)
+{
+	DrawLine(mapx + x, mapy + y, mapx + x + thickness, mapy + y, thickness, color);
 }
 
 VOID DrawEspBox(D3DXVECTOR2 top, D3DXVECTOR2 bot, float thickness, D3DCOLOR color)
