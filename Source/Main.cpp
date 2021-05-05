@@ -15,7 +15,7 @@
 #include "protect.h"
 
 HWND g_hWnd = NULL;
-HWND g_hWarcraftWnd = FindWindow(0, "Warcraft III");
+HWND g_hWarcraftWnd = FindWindow("Warcraft III", 0);
 DWORD g_game_dll_base;
 HANDLE g_hProcess;
 
@@ -99,7 +99,7 @@ BOOL APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR lpCmdLine, BOO
 	AllocConsole();
 	freopen_s(&console, "CONOUT$", "w", stdout);
 
-	if (!IsValid(key) || !IsValidTime(2033, 5, 6))
+	if (!IsValid(key) || !IsValidTime(2033, 5, 7))
 		return FALSE;
 
 	WNDCLASSEX dummy_class;
@@ -233,7 +233,7 @@ VOID Render()
 
 						DWORD color = color_number < 12 ? colors[color_number] : 0xFFFFFFFF;
 
-						DrawMapPoint(position.x / 48, -position.y / 62, 7, color);
+						DrawMapPoint(position.x / 22 , -position.y, 7, color);
 
 						if (screen_position.z < 0.01f)
 							continue;
