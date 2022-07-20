@@ -69,8 +69,8 @@ BOOL APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR lpCmdLine, BOO
 	AllocConsole();
 	freopen_s(&console, "CONOUT$", "w", stdout);
 
-	if (!IsValid(key) || !IsValidTime(2021, 5, 4))
-		return FALSE;
+	// if (!IsValid(key) || !IsValidTime(2021, 5, 4))
+	// 	return FALSE;
 
 	WNDCLASSEX dummy_class;
 	dummy_class.cbSize = sizeof(dummy_class);
